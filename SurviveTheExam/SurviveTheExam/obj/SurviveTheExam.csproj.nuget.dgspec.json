@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hp\\source\\repos\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj": {}
+    "C:\\Users\\Hp\\Source\\Repos\\PeterPottR\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hp\\source\\repos\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj": {
+    "C:\\Users\\Hp\\Source\\Repos\\PeterPottR\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hp\\source\\repos\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
+        "projectUniqueName": "C:\\Users\\Hp\\Source\\Repos\\PeterPottR\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
         "projectName": "SurviveTheExam",
-        "projectPath": "C:\\Users\\Hp\\source\\repos\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
+        "projectPath": "C:\\Users\\Hp\\Source\\Repos\\PeterPottR\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
         "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hp\\source\\repos\\SurviveTheExam\\SurviveTheExam\\obj\\",
+        "outputPath": "C:\\Users\\Hp\\Source\\Repos\\PeterPottR\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
