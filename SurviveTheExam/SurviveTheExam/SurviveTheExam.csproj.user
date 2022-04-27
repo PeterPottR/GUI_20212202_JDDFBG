@@ -7,6 +7,20 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="GameOver.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="LeaderBoard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="GameOver.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="LeaderBoard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
