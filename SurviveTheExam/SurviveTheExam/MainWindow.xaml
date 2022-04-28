@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SurviveTheExam"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <!--<Grid.Background>
+            
+        </Grid.Background>-->
+        <Button Click="newGame" Background="Gray" Height="50" Margin="539,192,30,192" Content="NEW GAME" FontSize="33"/>
+        <Button Click="Leaderboard" Background="Gray" Height="50" Margin="539,309,30,75" Content="LEADERBOARD" FontSize="33"/>
+        <Label Content="Enter your name: " Margin="539,252,146,152" Height="30" Background="Gray" FontSize="14"/>
+        <TextBox x:Name="playerName" Height="30" Width="120" Margin="654,252,26,152" TextWrapping="Wrap" FontSize="14"/>
     </Grid>
 </Window>

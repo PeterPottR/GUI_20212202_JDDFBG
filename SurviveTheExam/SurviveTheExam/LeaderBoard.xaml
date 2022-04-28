@@ -1,12 +1,23 @@
-﻿<Window x:Class="SurviveTheExam.LeaderBoard"
+﻿<Page x:Class="SurviveTheExam.LeaderBoard"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SurviveTheExam"
         mc:Ignorable="d"
-        Title="LeaderBoard" Height="450" Width="800">
+        Title="LeaderBoard" Height="500" Width="800">
     <Grid>
-        
+        <!--Grid.background benne imagebrush-al a hátteret-->
+        <Label Content="LEADERBOARD" Height="50" Width="250" VerticalAlignment="Top" Background="WhiteSmoke" Margin="275,25,275,0" FontSize="30" HorizontalContentAlignment="Center"/>
+        <Button Click="Back" Height="45" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,14,14" Content="BACK" FontSize="30"/>
+        <ListBox HorizontalAlignment="Center" Height="350" Width="550" VerticalAlignment="Center" x:Name="scores" Background="WhiteSmoke">
+            <ListBox.ItemContainerStyle>
+                <Style>
+                    <Setter Property="TextElement.FontSize" Value="24"/>
+                    <!--másnem még változatunk rajta-->
+                    <Setter Property="TextElement.FontFamily" Value="Courier new"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
     </Grid>
-</Window>
+</Page>

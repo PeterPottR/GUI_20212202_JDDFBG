@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SurviveTheExam"
         mc:Ignorable="d"
-        Title="GameOver" Height="450" Width="800">
-    <Grid>
-        
+        Title="GameOver" Height="250" Width="400">
+    <Grid Background="Black">
+        <Image/>
+        <!--ez lesz majd a szöveg hogy "you are dead xy csak ha képet szúrok be az szebb lesz"-->
+        <Button Click="Retry" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,20" Content="RETRY" FontSize="20" Background="DarkSlateGray"/>
+        <Button Click="Exit" Width="120" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" Content="EXIT" FontSize="20"  Background="DarkSlateGray"/>
     </Grid>
 </Window>

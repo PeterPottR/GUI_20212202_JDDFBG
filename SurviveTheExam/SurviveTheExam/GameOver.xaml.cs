@@ -23,5 +23,15 @@ namespace SurviveTheExam
         {
             InitializeComponent();
         }
+
+        private void Retry(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
