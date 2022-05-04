@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SurviveTheExam"
         mc:Ignorable="d"
         Title="LeaderBoard" Height="500" Width="800">
-    <Grid>
+    <Grid Background="Bisque">
         <!--Grid.background benne imagebrush-al a hátteret-->
         <Label Content="LEADERBOARD" Height="50" Width="250" VerticalAlignment="Top" Background="WhiteSmoke" Margin="275,25,275,0" FontSize="30" HorizontalContentAlignment="Center"/>
         <Button Click="Back" Height="45" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,14,14" Content="BACK" FontSize="30"/>
