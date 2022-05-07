@@ -31,14 +31,17 @@ namespace SurviveTheExam.Model
         //5os
         public static double FiveHeight = 40;
         public static double FiveWidth = 40;
+        public static double FiveSize;
 
         //kave
         public static double CoffeePlaceX;
         public static double CoffeePlaceY;
+        public static double CoffeeSize;
 
         //score
         public static double ScorePlaceX;
         public static double ScorePlaceY;
+        public static double ScoreTextSize;
 
         //fal
         public static double WallPlaceX;
