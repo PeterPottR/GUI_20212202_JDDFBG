@@ -14,9 +14,11 @@ namespace SurviveTheExam
 
         private void newGame(object sender, RoutedEventArgs e)
         {
-            //ha a playername.Text != string.empty-vel akk
-            //Application.Current.MainWindow.Content = new fő idító meghívása(playerName.Text)
-            //else MessageBox.Show("Enter Player Name!", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            if (playerName.Text != string.Empty)
+            {
+                Application.Current.MainWindow.Content = new GameLogic(this.playerName.Text);
+            }
+            else MessageBox.Show("Enter Player Name!", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
 
         private void Leaderboard(object sender, RoutedEventArgs e)

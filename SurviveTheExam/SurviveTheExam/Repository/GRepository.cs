@@ -1,5 +1,7 @@
-﻿using System;
+﻿using SurviveTheExam.Model;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,28 +9,31 @@ using System.Xml.Linq;
 
 namespace SurviveTheExam.Repository
 {
-    public class Repository : IRepository
+    public class GRepository : IRepository
     {
         private XDocument scores;
 
-        public Repository()
+        public GRepository()
         {
-            this.scores = XDocument.Load("scores.xml");
+            if (File.Exists("scores.xml"))
+            {
+                this.scores = XDocument.Load("scores.xml");
+            }
         }
 
-        //public List<pointsToXML> GetScores()
-        //{
-        //    List<pointsToXML> scores = new List<pointsToXML>();
+        public List<PointsToXML> GetScores()
+        {
+            List<PointsToXML> scores = new List<PointsToXML>();
 
-        //    foreach (XElement item in this.scores.Root.Descendants("onescore"))
-        //    {
-        //        scores.Add(new ScoreToXML(item.Element("name").Value, Timespan.parse(item.Element("time").Value), int.Parse(item.Element("points").Value)));
-        //    }
+            foreach (XElement item in this.scores.Root.Descendants("onescore"))
+            {
+                scores.Add(new PointsToXML(item.Element("name").Value, TimeSpan.Parse(item.Element("time").Value), int.Parse(item.Element("points").Value)));
+            }
 
-        //    List<ScoreToXML> orderedScores = scores.OrderByAscending(x => x.time).ToList();
+            List<PointsToXML> orderedScores = scores.OrderByDescending(x => x.Time).ToList();
 
-        //    return orderedScores;
-        //}
+            return orderedScores;
+        }
 
         public void NewScore(string name, TimeSpan time, int score)
         {
