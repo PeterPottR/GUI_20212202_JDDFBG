@@ -226,6 +226,7 @@ namespace SurviveTheExam.Logic
                 case '8': return Items.ewall;
                 case 's': return Items.player;
                 case 'z': return Items.zh;
+
                 default:
                     return Items.floor;
             }
