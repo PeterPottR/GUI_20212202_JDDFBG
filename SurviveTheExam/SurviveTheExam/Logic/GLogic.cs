@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace SurviveTheExam.Logic
 {
@@ -29,6 +30,12 @@ namespace SurviveTheExam.Logic
         private Queue<string> level;
 
         public Items prev = Items.floor;
+
+        //Változó, amely jelzi hogy elkezdődött-e az idő már
+        public bool GameStarted = false;
+
+        //Timer a játéklépésekhez
+        public DispatcherTimer timer = new DispatcherTimer();
 
         public GLogic(IRepository r)
         {
@@ -59,6 +66,9 @@ namespace SurviveTheExam.Logic
 
         public void MovePlayer(Direction dc)
         {
+            //Első nyomáskor elindul a stopper
+            if (!GameStarted) { timer.Start(); GameStarted = true; }
+
             var coords = WhereP();
             int i = coords[0];
             int j = coords[1];
