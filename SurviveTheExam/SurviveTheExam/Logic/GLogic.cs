@@ -63,6 +63,11 @@ namespace SurviveTheExam.Logic
             MovePlayer(7);
         }
 
+        public void LifeGained()
+        {
+
+        }
+
         private void LoadNext(string path)
         {
             string[] lines = File.ReadAllLines(path);
@@ -204,6 +209,7 @@ namespace SurviveTheExam.Logic
         {
             return this.repo.GetScores();
         }
+
 
         private Items ConvertToEnum(char v)
         {
