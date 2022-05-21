@@ -23,10 +23,10 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="1" Grid.Row="1" Click="newGame" Background="Gray" Height="50" Content="NEW GAME" FontSize="28"/>
-        <Button Grid.Column="1" Grid.Row="3" Click="Leaderboard" Background="Gray" Height="50" Content="LEADERBOARD" FontSize="28"/>
+        <Button Grid.Column="1" Grid.Row="1" Click="newGame" Background="OrangeRed" Height="50" Content="New game" FontSize="28" FontFamily="Comic Sans m" Margin="0,35,53,35"/>
+        <Button Grid.Column="1" Grid.Row="3" Click="Leaderboard" Background="OrangeRed" Height="50" Content="Leaderboard" FontSize="28" FontFamily="Comic Sans ms" Margin="0,35,53,35"/>
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center">
-            <Label Content="Enter your name: " Height="35" Background="Gray" FontSize="18"/>
+            <Label Content="Enter your name: " Height="35" Background="OrangeRed" FontSize="18" FontFamily="Comic Sans m"/>
             <TextBox x:Name="playerName" Height="35" Width="120" TextWrapping="Wrap" FontSize="18"/>
         </StackPanel>
     </Grid>

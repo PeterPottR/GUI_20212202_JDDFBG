@@ -21,6 +21,8 @@ namespace SurviveTheExam
         private string currentPlayerName;
         private string currentFileName;
         private Player p = new Player((7 * 49) + 1, (8 * 44) + 50);
+        private Heart h = new Heart(660, 709);
+        
 
         public ILogic model;
         public Size size;
@@ -39,6 +41,7 @@ namespace SurviveTheExam
         public GameLogic()
         {
             this.Loaded += Window_Loaded;
+            
         }
         public GameLogic(string playerName)
         {
@@ -143,6 +146,12 @@ namespace SurviveTheExam
                                 break;
                         }
                         drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "fiu_e_1.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), p.Area);
+                        foreach (var item in log.hearts)
+                        {
+                            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "life.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), item.Area);
+                        }
+                        
+                        
                     }
                 }
             }
@@ -151,6 +160,7 @@ namespace SurviveTheExam
         {
             this.rep = new GRepository();
             this.log = new GLogic(rep, p);
+
             Resize(new Size(735, 660));
             SetupModel(log);
 

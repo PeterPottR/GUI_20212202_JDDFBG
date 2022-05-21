@@ -9,9 +9,13 @@ namespace SurviveTheExam.Model
 {
     public class Heart : Element
     {
+        public int HeartCount { get; set; }
+
         public Heart(double x, double y)
         {
-            this.area = new Rect(x, y, Config.HeartSize, Config.HeartSize);
+            this.area = new Rect(x, y, Config.HeartWidth, Config.HeartHeight);
+            HeartCount = 3;
         }
+        
     }
 }

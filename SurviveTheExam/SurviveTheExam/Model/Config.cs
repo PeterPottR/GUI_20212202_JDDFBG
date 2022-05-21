@@ -19,8 +19,8 @@ namespace SurviveTheExam.Model
         public static double TimeTextSize;
 
         //sziv
-        public static double HeartPlaceX;
-        public static double HeartPlaceY;
+        public static double HeartWidth = 44;
+        public static double HeartHeight = 49;
         public static double HeartSize;
 
         //zh
