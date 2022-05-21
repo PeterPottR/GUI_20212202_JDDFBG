@@ -16,6 +16,8 @@ namespace SurviveTheExam.Logic
         Player boy;
         public DispatcherTimer timer = new DispatcherTimer();
         public List<Rect> wall;
+        public List<Heart> hearts;
+
 
         public enum Items
         {
@@ -50,6 +52,14 @@ namespace SurviveTheExam.Logic
                 level.Enqueue(item);
             }
             LoadNext(level.Dequeue());
+            hearts = new List<Heart>();
+
+            for (int i = 0; i < 3; i++)
+            {
+                hearts.Add(new Heart(620 + i * 30, 709));
+
+                //660, 709
+            }
         }
         private void timer_Tick(object sender, EventArgs e)
         {
