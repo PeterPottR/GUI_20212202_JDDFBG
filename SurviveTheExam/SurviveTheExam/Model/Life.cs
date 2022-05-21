@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SurviveTheExam.Model
 {
-    class Life
+    public class Life : Element
     {
+
     }
 }
