@@ -13,6 +13,15 @@ namespace SurviveTheExam.Logic
 {
     public class GLogic : ILogic
     {
+<<<<<<< HEAD
+=======
+        Player boy;
+        public DispatcherTimer timer = new DispatcherTimer();
+        public List<Rect> wall;
+        public List<Heart> hearts;
+
+
+>>>>>>> Model
         public enum Items
         {
             player, zwall, owall, twall, thwall, fowall, fvwall, swall, svwall, ewall, floor, zh
@@ -57,6 +66,14 @@ namespace SurviveTheExam.Logic
                 level.Enqueue(item);
             }
             LoadNext(level.Dequeue());
+            hearts = new List<Heart>();
+
+            for (int i = 0; i < 3; i++)
+            {
+                hearts.Add(new Heart(620 + i * 30, 709));
+
+                //660, 709
+            }
         }
         private void timer_Tick(object sender, EventArgs e)
         {
