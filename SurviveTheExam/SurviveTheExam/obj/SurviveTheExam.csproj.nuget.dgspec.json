@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kocsis Noémi\\Documents\\Egyetem\\prog4\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj": {}
+    "C:\\Users\\Lili\\Documents\\JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kocsis Noémi\\Documents\\Egyetem\\prog4\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj": {
+    "C:\\Users\\Lili\\Documents\\JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kocsis Noémi\\Documents\\Egyetem\\prog4\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
+        "projectUniqueName": "C:\\Users\\Lili\\Documents\\JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
         "projectName": "SurviveTheExam",
-        "projectPath": "C:\\Users\\Kocsis Noémi\\Documents\\Egyetem\\prog4\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
-        "packagesPath": "C:\\Users\\Kocsis Noémi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kocsis Noémi\\Documents\\Egyetem\\prog4\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\obj\\",
+        "projectPath": "C:\\Users\\Lili\\Documents\\JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
+        "packagesPath": "C:\\Users\\Lili\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lili\\Documents\\JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Kocsis Noémi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lili\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +61,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
         }
       }
     }
