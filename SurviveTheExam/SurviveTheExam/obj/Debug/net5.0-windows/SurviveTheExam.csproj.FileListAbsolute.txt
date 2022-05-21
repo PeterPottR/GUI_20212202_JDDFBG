@@ -24,3 +24,29 @@ C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExa
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\ref\SurviveTheExam.dll
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.pdb
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.genruntimeconfig.cache
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.csproj.AssemblyReference.cache
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\GameOver.g.cs
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\LeaderBoard.g.cs
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\MainWindow.g.cs
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\App.g.cs
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam_MarkupCompile.cache
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam_MarkupCompile.lref
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.dll
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\ref\SurviveTheExam.dll
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.pdb
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.exe
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.deps.json
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.runtimeconfig.json
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.runtimeconfig.dev.json
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.dll
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\ref\SurviveTheExam.dll
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.pdb
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\GameOver.baml
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\LeaderBoard.baml
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\MainWindow.baml
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.g.resources
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.AssemblyInfoInputs.cache
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.AssemblyInfo.cs
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.csproj.CoreCompileInputs.cache
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.genruntimeconfig.cache
