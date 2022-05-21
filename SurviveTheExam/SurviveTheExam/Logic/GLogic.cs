@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace SurviveTheExam.Logic
@@ -31,14 +32,22 @@ namespace SurviveTheExam.Logic
 
         public Items prev = Items.floor;
 
+        Player boy;
+
+        public List<Rect> wall;
+
         //Változó, amely jelzi hogy elkezdődött-e az idő már
         public bool GameStarted = false;
 
         //Timer a játéklépésekhez
         public DispatcherTimer timer = new DispatcherTimer();
 
-        public GLogic(IRepository r)
+        public GLogic(IRepository r, Player p)
         {
+            timer.Interval = TimeSpan.FromMilliseconds(5);
+            timer.IsEnabled = true;
+            timer.Tick += timer_Tick;
+            this.boy = p;
             this.repo = r;
 
             level = new Queue<string>();
@@ -48,6 +57,10 @@ namespace SurviveTheExam.Logic
                 level.Enqueue(item);
             }
             LoadNext(level.Dequeue());
+        }
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            MovePlayer(7);
         }
 
         private void LoadNext(string path)
@@ -64,62 +77,101 @@ namespace SurviveTheExam.Logic
 
         }
 
-        public void MovePlayer(Direction dc)
+        public void MovePlayer(int sp)
         {
             //Első nyomáskor elindul a stopper
             if (!GameStarted) { timer.Start(); GameStarted = true; }
 
-            var coords = WhereP();
-            int i = coords[0];
-            int j = coords[1];
-            int old_i = i;
-            int old_j = j;
-            switch (dc)
+            //mozgások
+            if (boy.up)
             {
-                case Direction.up:
-                    if (i - 1 >= 0) { i--; }
-                    break;
-                case Direction.down:
-                    if (i + 1 < GameMatrix.GetLength(0)) { i++; }
-                    break;
-                case Direction.left:
-                    if (j - 1 >= 0) { j--; }
-                    break;
-                case Direction.right:
-                    if (j + 1 < GameMatrix.GetLength(1)) { j++; }
-                    break;
-                default:
-                    break;
+                var i = false;
+                foreach (var item in wall)
+                {
+                    if (boy.Area.Left < item.Right - 3 && boy.Area.Right > item.Left + 3 && ((boy.Area.Top) - 7) < item.Bottom && boy.Area.Bottom > item.Top + 3)
+                    {
+                        for (int j = 0; j < 7; j++)
+                        {
+                            if (boy.Area.Top - 1 >= item.Bottom)
+                            {
+                                boy.ChangeY(-1);
+                            }
+                        }
+
+                        i = true;
+                    }
+                }
+                if (i == false)
+                {
+                    boy.ChangeY(-7);
+                }
+
             }
-            if (GameMatrix[i, j] == Items.floor)
+            else if (boy.down)
             {
-                GameMatrix[i, j] = Items.player;
-                GameMatrix[old_i, old_j] = prev;
-                prev = Items.floor;
+                var i = false;
+                foreach (var item in wall)
+                {
+                    if (boy.Area.Left < item.Right - 3 && boy.Area.Right > item.Left + 3 && boy.Area.Top < item.Bottom && ((boy.Area.Bottom) + 7) > item.Top + 3)
+                    {
+                        for (int j = 0; j < 7; j++)
+                        {
+                            if (boy.Area.Bottom + 1 <= item.Top)
+                            {
+                                boy.ChangeY(+1);
+                            }
+                        }
+                        i = true;
+                    }
+                }
+                if (i == false)
+                {
+                    boy.ChangeY(sp);
+                }
             }
-            else if (GameMatrix[i, j] == Items.fvwall)
+            else if (boy.left)
             {
-                GameMatrix[i, j] = Items.player;
-                GameMatrix[old_i, old_j] = prev;
-                prev = Items.fvwall;
+                var i = false;
+                foreach (var item in wall)
+                {
+                    if (((boy.Area.Left) - 4) < item.Right - 3 && boy.Area.Right > item.Left + 3 && boy.Area.Top < item.Bottom && boy.Area.Bottom > item.Top + 3)
+                    {
+                        for (int j = 0; j < 4; j++)
+                        {
+                            if (boy.Area.Left - 1 >= item.Right)
+                            {
+                                boy.ChangeX(-1);
+                            }
+                        }
+                        i = true;
+                    }
+                }
+                if (i == false)
+                {
+                    boy.ChangeX(-4);
+                }
             }
-            else if (GameMatrix[i, j] == Items.swall)
+            else if (boy.right)
             {
-                GameMatrix[i, j] = Items.player;
-                GameMatrix[old_i, old_j] = prev;
-                prev = Items.swall;
-            }
-            else if (GameMatrix[i, j] == Items.svwall)
-            {
-                GameMatrix[i, j] = Items.player;
-                GameMatrix[old_i, old_j] = prev;
-                prev = Items.svwall;
-            }
-            else if (GameMatrix[i, j] == Items.ewall)
-            {
-                GameMatrix[i, j] = Items.player;
-                GameMatrix[old_i, old_j] = prev;
-                prev = Items.ewall;
+                var i = false;
+                foreach (var item in wall)
+                {
+                    if (boy.Area.Left < item.Right - 3 && ((boy.Area.Right) + 4) > item.Left + 3 && boy.Area.Top < item.Bottom && boy.Area.Bottom > item.Top + 3)
+                    {
+                        for (int j = 0; j < 4; j++)
+                        {
+                            if (boy.Area.Right + 1 <= item.Left)
+                            {
+                                boy.ChangeX(1);
+                            }
+                        }
+                        i = true;
+                    }
+                }
+                if (i == false)
+                {
+                    boy.ChangeX(4);
+                }
             }
         }
 
