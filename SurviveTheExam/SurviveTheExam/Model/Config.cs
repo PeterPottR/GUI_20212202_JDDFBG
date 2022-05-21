@@ -9,9 +9,9 @@ namespace SurviveTheExam.Model
     public class Config
     {
         //karakter
-        public static double PlayerWidth = 40;
+        public static double PlayerWidth = 46;
         public static double PlayerHeight = 40;
-        public static double PlayerSpeed;
+        //public static double PlayerSpeed;
 
         //time
         public static double TimePlaceX;
