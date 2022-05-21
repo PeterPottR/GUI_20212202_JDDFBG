@@ -8,5 +8,6 @@ namespace SurviveTheExam.Model
 {
     class Five
     {
+
     }
 }

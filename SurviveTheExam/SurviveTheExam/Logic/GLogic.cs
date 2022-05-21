@@ -14,10 +14,11 @@ namespace SurviveTheExam.Logic
     public class GLogic : ILogic
     {
         Player boy;
+        List<Five> fives;
         public DispatcherTimer timer = new DispatcherTimer();
         public List<Rect> wall;
         public List<Heart> hearts;
-
+        public int FiveCount = 0;
 
         public enum Items
         {
@@ -229,6 +230,14 @@ namespace SurviveTheExam.Logic
             //    GameMatrix[old_i, old_j] = prev;
             //    prev = Items.ewall;
             //}
+        }
+
+        public void FiveCollected()
+        {
+            if (FiveCount<3)
+            {
+                FiveCount++;
+            }
         }
 
         public void NewScore(string name, TimeSpan time, int score)
