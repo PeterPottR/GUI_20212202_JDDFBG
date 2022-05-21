@@ -21,7 +21,7 @@ namespace SurviveTheExam.Logic
 
         public enum Items
         {
-            player, zwall, owall, twall, thwall, fowall, fvwall, swall, svwall, ewall, floor, zh
+            player, zwall, owall, twall, thwall, fowall, fvwall, swall, svwall, ewall, floor, zh, coffee, five
         }
         public Items[,] GameMatrix { get; set; }
         public enum Direction
@@ -254,6 +254,7 @@ namespace SurviveTheExam.Logic
                 case '6': return Items.swall;
                 case '7': return Items.svwall;
                 case '8': return Items.ewall;
+                case 'o': return Items.five;
                 default:
                     return Items.floor;
             }
