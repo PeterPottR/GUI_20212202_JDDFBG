@@ -10,7 +10,7 @@ namespace SurviveTheExam.Logic
 {
     public interface ILogic
     {
-        void MovePlayer(int sp);
+        void MovePlayer(GLogic.Direction dc);
         Items[,] GameMatrix { get; set; }
         void MoveZh();
         void NewScore(string name, TimeSpan time, int score);
