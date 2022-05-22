@@ -77,6 +77,11 @@ namespace SurviveTheExam.Logic
             MovePlayer(7);
         }
 
+        public void CoffeePickedUp()
+        {
+
+        }
+
         private void LoadNext(string path)
         {
             string[] lines = File.ReadAllLines(path);
@@ -594,6 +599,7 @@ namespace SurviveTheExam.Logic
             return this.repo.GetScores();
         }
 
+
         private Items ConvertToEnum(char v)
         {
             switch (v)
@@ -608,6 +614,7 @@ namespace SurviveTheExam.Logic
                 case '7': return Items.svwall;
                 case '8': return Items.ewall;
                 case 'o': return Items.five;
+                case 'k': return Items.coffee;
                 default:
                     return Items.floor;
             }

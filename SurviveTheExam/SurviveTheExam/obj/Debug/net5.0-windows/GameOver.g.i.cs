@@ -53,7 +53,7 @@ namespace SurviveTheExam {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SurviveTheExam;component/gameover.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SurviveTheExam;V1.0.0.0;component/gameover.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\GameOver.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
