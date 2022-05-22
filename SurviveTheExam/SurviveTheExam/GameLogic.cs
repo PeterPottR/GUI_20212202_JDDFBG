@@ -267,7 +267,7 @@ namespace SurviveTheExam
                                 break;
                             //kávé implementálás
                             case GLogic.Items.coffee:
-                                if (log.hearts.Count<4)
+                                if (log.hearts.Count<3)
                                 {
                                     brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "coffee.png"), UriKind.RelativeOrAbsolute)));
