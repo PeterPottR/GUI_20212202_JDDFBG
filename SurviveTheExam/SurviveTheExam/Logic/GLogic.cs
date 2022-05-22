@@ -15,7 +15,7 @@ namespace SurviveTheExam.Logic
     public class GLogic : ILogic
     {
         Player boy;
-        Score sc;
+        public Score sc;
         public List<Tuple<int, int, int>> where = new List<Tuple<int, int, int>>();
         List<Five> fives;
         public DispatcherTimer timer = new DispatcherTimer();

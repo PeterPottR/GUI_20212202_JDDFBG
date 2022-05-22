@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "Z1abrRsPnApVC6a39LRZhGIBdrr5QHwHPbUsd8N9deJq6BsbcTfh/hZW4hlD7LzKRFyM2ja3kbiz3u0b3++Alw==",
+  "dgSpecHash": "6LgfiY2XytEiGOz3Z6UA58sjmY4N+yQeOCwe6HUPfH2elGgFQ4d3j9i3PHXE0StJ55zbX2ge1kPcwYt0Xc9STQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lili\\Documents\\JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
+  "projectFilePath": "C:\\Users\\Kocsis Noémi\\Documents\\Egyetem\\prog4\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Kocsis Noémi\\Documents\\Egyetem\\prog4\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

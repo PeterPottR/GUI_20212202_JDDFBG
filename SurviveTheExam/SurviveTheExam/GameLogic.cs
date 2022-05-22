@@ -75,7 +75,7 @@ namespace SurviveTheExam
             int minutes = ElapsedTime / 60;
             string testString = $"Time: {minutes}:{seconds}";
 
-            FormattedText formattedText = new FormattedText(testString, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Comic sans m"), 30, Brushes.White);
+            FormattedText formattedText = new FormattedText(testString, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Comic Sans MS"), 30, Brushes.White);
 
             formattedText.MaxTextWidth = 200;
             formattedText.MaxTextHeight = 50;
@@ -84,6 +84,19 @@ namespace SurviveTheExam
             //formattedText.SetForegroundBrush(new LinearGradientBrush(Colors.Pink, Colors.Crimson, 90.0), 36, 5);
             //formattedText.SetFontSize(36, 36, 5);
             //formattedText.SetFontWeight(FontWeights.Bold, 42, 48);
+
+            return formattedText;
+        }
+
+        private FormattedText ScoreTextSetUp()
+        {
+            int score = log.sc.ScoreNum;
+            string scoreString = $"Score: {score}";
+
+            FormattedText formattedText = new FormattedText(scoreString, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Comic Sans MS"), 30, Brushes.White);
+
+            formattedText.MaxTextWidth = 200;
+            formattedText.MaxTextHeight = 50;
 
             return formattedText;
         }
@@ -103,6 +116,7 @@ namespace SurviveTheExam
 
                 drawingContext.DrawRectangle(Brushes.OrangeRed, new Pen(Brushes.Black, 0), new Rect(0, 0, 200, 50));
                 drawingContext.DrawText(TimeTextSetup(), new Point(10, 10));
+                drawingContext.DrawText(ScoreTextSetUp(), new Point(250, 10));
 
                 log.wall = new List<Rect>();
                 wall.wall = new List<Rect>();
