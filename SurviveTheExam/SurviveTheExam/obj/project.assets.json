@@ -8,24 +8,19 @@
     "net5.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Lili\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Hp\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lili\\Documents\\JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
+      "projectUniqueName": "D:\\DEVELOPMENT\\PROJECT WORK (C#)\\GUI_JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
       "projectName": "SurviveTheExam",
-      "projectPath": "C:\\Users\\Lili\\Documents\\JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
-      "packagesPath": "C:\\Users\\Lili\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lili\\Documents\\JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\obj\\",
+      "projectPath": "D:\\DEVELOPMENT\\PROJECT WORK (C#)\\GUI_JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
+      "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
+      "outputPath": "D:\\DEVELOPMENT\\PROJECT WORK (C#)\\GUI_JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Lili\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -68,7 +63,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

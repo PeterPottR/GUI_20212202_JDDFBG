@@ -112,6 +112,7 @@ namespace SurviveTheExam.Logic
                 {
                     boy.ChangeY(-7);
                 }
+
             }
             else if (boy.down)
             {
