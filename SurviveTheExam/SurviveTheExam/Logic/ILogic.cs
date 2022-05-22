@@ -15,5 +15,6 @@ namespace SurviveTheExam.Logic
         void MoveZh();
         void NewScore(string name, TimeSpan time, int score);
         List<PointsToXML> ListScores();
+        event EventHandler Change;
     }
 }
