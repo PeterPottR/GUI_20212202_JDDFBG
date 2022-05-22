@@ -15,6 +15,8 @@ namespace SurviveTheExam.Logic
     public class GLogic : ILogic
     {
         Player boy;
+        Score sc;
+        public List<Tuple<int, int, int>> where = new List<Tuple<int, int, int>>();
         List<Five> fives;
         public DispatcherTimer timer = new DispatcherTimer();
         Zh zh;
@@ -52,6 +54,7 @@ namespace SurviveTheExam.Logic
             timer.Start();
             this.boy = p;
             this.repo = r;
+            sc = new Score();
 
             level = new Queue<string>();
             var lvls = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "levels"), "*.lvl");
@@ -181,6 +184,14 @@ namespace SurviveTheExam.Logic
                 }
             }
             Change?.Invoke(this, null);
+
+            var q = where.Find(x => boy.Area.Contains(x.Item1, x.Item2) && x.Item3 == 1);
+            if (q != null)
+            {
+                var index = where.FindIndex(x => x.Item1 == q.Item1 && x.Item2 == q.Item2);
+                where[index] = Tuple.Create(q.Item1, q.Item2, 0);
+                sc.ScoreNum++;
+            }
         }
 
         private int merre = 1;

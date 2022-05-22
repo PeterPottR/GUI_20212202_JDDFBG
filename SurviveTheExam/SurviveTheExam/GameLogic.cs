@@ -158,24 +158,84 @@ namespace SurviveTheExam
                                 brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "5.png"), UriKind.RelativeOrAbsolute)));
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 1))
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "score.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                {
+                                }
+                                else
+                                {
+                                    var q = new Score(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                    drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                }
                                 break;
                             case GLogic.Items.swall:
                                 brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "6.png"), UriKind.RelativeOrAbsolute)));
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 1))
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "score.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                {
+                                }
+                                else
+                                {
+                                    var q = new Score(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                    drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                }
                                 break;
                             case GLogic.Items.svwall:
                                 brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "7.png"), UriKind.RelativeOrAbsolute)));
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 1))
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "score.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                {
+                                }
+                                else
+                                {
+                                    var q = new Score(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                    drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                }
                                 break;
                             case GLogic.Items.ewall:
                                 brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "8.png"), UriKind.RelativeOrAbsolute)));
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 1))
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "score.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                {
+                                }
+                                else
+                                {
+                                    var q = new Score(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                    drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                }
                                 break;
                             case GLogic.Items.floor:
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 1))
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "score.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                {
+                                }
+                                else
+                                {
+                                    var q = new Score(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                    drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                }
                                 break;
                             case GLogic.Items.five:
                                 if (FiveActive == log.FiveCount)
