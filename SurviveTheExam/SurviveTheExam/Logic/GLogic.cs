@@ -2,6 +2,7 @@
 using SurviveTheExam.Repository;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace SurviveTheExam.Logic
         public List<Rect> wall;
         public List<Heart> hearts;
         public int FiveCount = 0;
+        public Stopwatch gameTime = new Stopwatch();
 
         public enum Items
         {
@@ -58,9 +60,9 @@ namespace SurviveTheExam.Logic
             for (int i = 0; i < 3; i++)
             {
                 hearts.Add(new Heart(620 + i * 30, 709));
-
                 //660, 709
             }
+            gameTime.Start();
         }
         private void timer_Tick(object sender, EventArgs e)
         {
