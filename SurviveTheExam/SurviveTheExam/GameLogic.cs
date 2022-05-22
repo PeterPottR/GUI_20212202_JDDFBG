@@ -65,7 +65,9 @@ namespace SurviveTheExam
         private FormattedText TimeTextSetup()
         {
             int ElapsedTime = (int)log.gameTime.ElapsedMilliseconds /1000;
-            string testString = $"Time: {ElapsedTime}";
+            int seconds = ElapsedTime % 60;
+            int minutes = ElapsedTime / 60;
+            string testString = $"Time: {minutes}:{seconds}";
 
             FormattedText formattedText = new FormattedText(testString, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Comic sans m"), 30, Brushes.White);
 
