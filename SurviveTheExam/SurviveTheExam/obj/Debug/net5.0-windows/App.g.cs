@@ -46,9 +46,13 @@ namespace SurviveTheExam {
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
 <<<<<<< HEAD
+<<<<<<< HEAD
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.9.0")]
 =======
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "6.0.1.0")]
+>>>>>>> Model
+=======
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.9.0")]
 >>>>>>> Model
         public void InitializeComponent() {
             
@@ -65,9 +69,13 @@ namespace SurviveTheExam {
         [System.STAThreadAttribute()]
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
 <<<<<<< HEAD
+<<<<<<< HEAD
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.9.0")]
 =======
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "6.0.1.0")]
+>>>>>>> Model
+=======
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.9.0")]
 >>>>>>> Model
         public static void Main() {
             SurviveTheExam.App app = new SurviveTheExam.App();

@@ -22,6 +22,7 @@ namespace SurviveTheExam
         private string currentFileName;
         private Player p = new Player((7 * 49) + 1, (8 * 44) + 50);
         private Heart h = new Heart(660, 709);
+        private int FiveActive = 0;
         
 
         public ILogic model;
@@ -36,7 +37,6 @@ namespace SurviveTheExam
         {
             this.model = model;
         }
-
 
         public GameLogic()
         {
@@ -142,6 +142,20 @@ namespace SurviveTheExam
                             case GLogic.Items.floor:
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
                                 break;
+                            case GLogic.Items.five:
+                                if (FiveActive == log.FiveCount)
+                                {
+                                    FiveActive++;
+                                    brush = new ImageBrush
+                                    (new BitmapImage(new Uri(Path.Combine("images", "book.png"), UriKind.RelativeOrAbsolute)));
+                                    drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                else
+                                {
+                                    FiveActive++;
+                                    drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                break;
                             default:
                                 break;
                         }
@@ -151,9 +165,9 @@ namespace SurviveTheExam
                             drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "life.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), item.Area);
                         }
                         
-                        
                     }
                 }
+                FiveActive = 0;
             }
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)

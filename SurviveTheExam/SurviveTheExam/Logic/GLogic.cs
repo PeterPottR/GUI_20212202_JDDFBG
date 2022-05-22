@@ -14,14 +14,15 @@ namespace SurviveTheExam.Logic
     public class GLogic : ILogic
     {
         Player boy;
+        List<Five> fives;
         public DispatcherTimer timer = new DispatcherTimer();
         public List<Rect> wall;
         public List<Heart> hearts;
-
+        public int FiveCount = 0;
 
         public enum Items
         {
-            player, zwall, owall, twall, thwall, fowall, fvwall, swall, svwall, ewall, floor, zh
+            player, zwall, owall, twall, thwall, fowall, fvwall, swall, svwall, ewall, floor, zh, coffee, five
         }
         public Items[,] GameMatrix { get; set; }
 
@@ -214,6 +215,14 @@ namespace SurviveTheExam.Logic
             throw new NotImplementedException();
         }
 
+        public void FiveCollected()
+        {
+            if (FiveCount<3)
+            {
+                FiveCount++;
+            }
+        }
+
         public void NewScore(string name, TimeSpan time, int score)
         {
             this.repo.NewScore(name, time, score);
@@ -238,8 +247,7 @@ namespace SurviveTheExam.Logic
                 case '6': return Items.swall;
                 case '7': return Items.svwall;
                 case '8': return Items.ewall;
-                case 's': return Items.player;
-                case 'z': return Items.zh;
+                case 'o': return Items.five;
                 default:
                     return Items.floor;
             }
