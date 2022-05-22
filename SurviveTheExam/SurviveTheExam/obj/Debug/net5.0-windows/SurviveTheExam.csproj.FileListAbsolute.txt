@@ -5,7 +5,6 @@ C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExa
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.dll
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\ref\SurviveTheExam.dll
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.pdb
-C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.csproj.AssemblyReference.cache
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\GameOver.g.cs
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\LeaderBoard.g.cs
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\MainWindow.g.cs
