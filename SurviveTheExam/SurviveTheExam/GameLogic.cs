@@ -98,7 +98,7 @@ namespace SurviveTheExam
                 drawingContext.DrawRectangle(Brushes.OrangeRed, new Pen(Brushes.Black, 0), new Rect(0, 0, 200, 50));
                 drawingContext.DrawText(TimeTextSetup(), new Point(10, 10));
 
-                log.wall = new List<Rect>();
+                log.wallL = new List<Rect>();
 
                 for (int i = 0; i < model.GameMatrix.GetLength(0); i++)
                 {
@@ -116,35 +116,35 @@ namespace SurviveTheExam
                                     (new BitmapImage(new Uri(Path.Combine("images", "0.png"), UriKind.RelativeOrAbsolute)));
                                 var y = new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight);
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), y);
-                                log.wall.Add(y);
+                                log.wallL.Add(y);
                                 break;
                             case GLogic.Items.owall:
                                 brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "1.png"), UriKind.RelativeOrAbsolute)));
                                 var x = new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight);
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), x);
-                                log.wall.Add(x);
+                                log.wallL.Add(x);
                                 break;
                             case GLogic.Items.twall:
                                 brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "2.png"), UriKind.RelativeOrAbsolute)));
                                 Rect c = new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight);
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), c);
-                                log.wall.Add(c);
+                                log.wallL.Add(c);
                                 break;
                             case GLogic.Items.thwall:
                                 brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "3.png"), UriKind.RelativeOrAbsolute)));
                                 Rect v = new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight);
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), v);
-                                log.wall.Add(v);
+                                log.wallL.Add(v);
                                 break;
                             case GLogic.Items.fowall:
                                 brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "4.png"), UriKind.RelativeOrAbsolute)));
                                 Rect b = new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight);
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), b);
-                                log.wall.Add(b);
+                                log.wallL.Add(b);
                                 break;
                             case GLogic.Items.fvwall:
                                 brush = new ImageBrush

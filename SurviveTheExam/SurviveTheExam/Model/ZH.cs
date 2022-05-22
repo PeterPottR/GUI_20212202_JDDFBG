@@ -8,18 +8,12 @@ using System.Windows.Threading;
 
 namespace SurviveTheExam.Model
 {
-    public class ZH : Element
+    public class Zh : Element
     {
         static Random r = new Random();
         public DispatcherTimer Zh_timer = new DispatcherTimer();
-        //public Zh(int x, int y)
-        //{
-        //    this.area = new Rect(x, y, 49, 44);
-        //    Zh_timer.Interval = TimeSpan.FromMilliseconds(2);
-        //    Zh_timer.IsEnabled = true;
-        //}
 
-        public ZH(int x, int y)
+        public Zh(int x, int y)
         {
             this.area = new Rect(x, y, 49, 44);
             Zh_timer.Interval = TimeSpan.FromMilliseconds(2);

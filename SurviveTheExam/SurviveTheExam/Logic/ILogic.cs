@@ -12,7 +12,7 @@ namespace SurviveTheExam.Logic
     {
         void MovePlayer(int sp);
         Items[,] GameMatrix { get; set; }
-        void MoveZh();
+        void MoveZh(WallList w);
         void NewScore(string name, TimeSpan time, int score);
         List<PointsToXML> ListScores();
         event EventHandler Change;
