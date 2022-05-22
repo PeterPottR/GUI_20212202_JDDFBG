@@ -16,7 +16,7 @@ namespace SurviveTheExam.Model
         public Zh(int x, int y)
         {
             this.area = new Rect(x, y, 49, 44);
-            Zh_timer.Interval = TimeSpan.FromMilliseconds(2);
+            Zh_timer.Interval = TimeSpan.FromMilliseconds(25);
             Zh_timer.IsEnabled = true;
         }
 

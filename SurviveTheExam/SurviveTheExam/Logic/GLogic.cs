@@ -46,7 +46,7 @@ namespace SurviveTheExam.Logic
 
         public GLogic(IRepository r, Player p)
         {
-            timer.Interval = TimeSpan.FromMilliseconds(5);
+            timer.Interval = TimeSpan.FromMilliseconds(15);
             timer.IsEnabled = true;
             timer.Tick += timer_Tick;
             timer.Start();
@@ -179,6 +179,7 @@ namespace SurviveTheExam.Logic
                     boy.ChangeX(4);
                 }
             }
+            Change?.Invoke(this, null);
         }
 
         private int merre = 1;
