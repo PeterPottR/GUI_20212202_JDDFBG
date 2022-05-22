@@ -11,9 +11,11 @@ namespace SurviveTheExam.Model
     public class Player : Element
     {
         public bool up, down, right, left;
+        public int Life;
         public Player(int x, int y)
         {
             this.area = new Rect(x, y, Config.PlayerWidth, Config.PlayerHeight);
+            Life = 3;
         }
         public void KeyPressed(Key key)
         {
