@@ -14,9 +14,9 @@ namespace SurviveTheExam.Model
         //public static double PlayerSpeed;
 
         //time
-        public static double TimePlaceX = 200;
-        public static double TimePlaceY = 100;
-        public static double TimeTextSize = 2;
+        public static double TimePlaceX;
+        public static double TimePlaceY;
+        public static double TimeTextSize = 300;
 
         //sziv
         public static double HeartWidth = 44;

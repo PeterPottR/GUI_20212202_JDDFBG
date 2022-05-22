@@ -5,7 +5,6 @@ C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExa
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.dll
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\ref\SurviveTheExam.dll
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.pdb
-C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.csproj.AssemblyReference.cache
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\GameOver.g.cs
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\LeaderBoard.g.cs
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\MainWindow.g.cs
@@ -24,35 +23,6 @@ C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExa
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\ref\SurviveTheExam.dll
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.pdb
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.genruntimeconfig.cache
-<<<<<<< HEAD
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.exe
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.deps.json
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.runtimeconfig.json
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.runtimeconfig.dev.json
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.dll
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\ref\SurviveTheExam.dll
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.pdb
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.csproj.AssemblyReference.cache
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\GameOver.g.cs
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\LeaderBoard.g.cs
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\MainWindow.g.cs
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\App.g.cs
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam_MarkupCompile.cache
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam_MarkupCompile.lref
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\GameOver.baml
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\LeaderBoard.baml
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\MainWindow.baml
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.g.resources
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.GeneratedMSBuildEditorConfig.editorconfig
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.AssemblyInfoInputs.cache
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.AssemblyInfo.cs
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.csproj.CoreCompileInputs.cache
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.dll
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\ref\SurviveTheExam.dll
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.pdb
-D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.genruntimeconfig.cache
-=======
-C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.csproj.AssemblyReference.cache
 C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\GameOver.g.cs
 C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\LeaderBoard.g.cs
 C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\MainWindow.g.cs
@@ -78,9 +48,6 @@ C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExa
 C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.AssemblyInfo.cs
 C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.csproj.CoreCompileInputs.cache
 C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.genruntimeconfig.cache
-<<<<<<< HEAD
->>>>>>> Model
-=======
 D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.exe
 D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.deps.json
 D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\bin\Debug\net5.0-windows\SurviveTheExam.runtimeconfig.json
@@ -107,4 +74,4 @@ D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\
 D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\ref\SurviveTheExam.dll
 D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.pdb
 D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.genruntimeconfig.cache
->>>>>>> Model
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.csproj.AssemblyReference.cache
