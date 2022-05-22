@@ -7,11 +7,12 @@ using System.Windows;
 
 namespace SurviveTheExam.Model
 {
-    public class Wall : Element
+    public class WallList
     {
-        public Wall(double x, double y)
+        public List<Rect> wall;
+        public WallList()
         {
-            this.area = new Rect(x, y, Config.WallPlaceX, Config.WallPlaceY);
+
         }
     }
 }

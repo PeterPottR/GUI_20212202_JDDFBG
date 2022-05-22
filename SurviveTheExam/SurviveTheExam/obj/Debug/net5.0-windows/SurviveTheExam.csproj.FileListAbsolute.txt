@@ -75,4 +75,3 @@ D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\
 D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\ref\SurviveTheExam.dll
 D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.pdb
 D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.genruntimeconfig.cache
-C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.csproj.AssemblyReference.cache
