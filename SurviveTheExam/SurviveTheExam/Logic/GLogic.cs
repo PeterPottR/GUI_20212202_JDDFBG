@@ -49,6 +49,7 @@ namespace SurviveTheExam.Logic
             timer.Interval = TimeSpan.FromMilliseconds(5);
             timer.IsEnabled = true;
             timer.Tick += timer_Tick;
+            timer.Start();
             this.boy = p;
             this.repo = r;
 
@@ -89,8 +90,6 @@ namespace SurviveTheExam.Logic
 
         public void MovePlayer(int sp)
         {
-            timer.Start();
-
             if (boy.up)
             {
                 var i = false;
