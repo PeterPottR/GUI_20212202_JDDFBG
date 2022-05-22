@@ -19,13 +19,18 @@ namespace SurviveTheExam
     {
         private IRepository rep;
         private GLogic log;
+        private GLogic zlog;
+        private GLogic z2log;
         private string currentPlayerName;
         private string currentFileName;
         private Player p = new Player((7 * 49) + 1, (8 * 44) + 50);
         private Heart h = new Heart(660, 709);
         private Time t = new Time(20, 709);
         private int FiveActive = 0;
-        
+        private WallList wall = new WallList();
+        private Zh zh = new Zh(13 * 49, (7 * 44) + 50);
+        private Zh zh2 = new Zh(10 * 49, (13 * 44) + 50);
+
 
         public ILogic model;
         public Size size;
@@ -38,6 +43,7 @@ namespace SurviveTheExam
         public void SetupModel(ILogic model)
         {
             this.model = model;
+            this.model.Change += (sender, eventargs) => this.InvalidateVisual();
         }
 
         public GameLogic()
@@ -99,6 +105,7 @@ namespace SurviveTheExam
                 drawingContext.DrawText(TimeTextSetup(), new Point(10, 10));
 
                 log.wall = new List<Rect>();
+                wall.wall = new List<Rect>();
 
                 for (int i = 0; i < model.GameMatrix.GetLength(0); i++)
                 {
@@ -107,16 +114,13 @@ namespace SurviveTheExam
                         ImageBrush brush = new ImageBrush();
                         switch (model.GameMatrix[i, j])
                         {
-                            //case GLogic.Items.player:
-                            //    brush = new ImageBrush
-                            //        (new BitmapImage(new Uri(Path.Combine("images", "fiu_e_1.png"), UriKind.RelativeOrAbsolute)));
-                            //    break;
                             case GLogic.Items.zwall:
                                 brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "0.png"), UriKind.RelativeOrAbsolute)));
                                 var y = new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight);
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), y);
                                 log.wall.Add(y);
+                                wall.wall.Add(y);
                                 break;
                             case GLogic.Items.owall:
                                 brush = new ImageBrush
@@ -124,6 +128,7 @@ namespace SurviveTheExam
                                 var x = new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight);
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), x);
                                 log.wall.Add(x);
+                                wall.wall.Add(x);
                                 break;
                             case GLogic.Items.twall:
                                 brush = new ImageBrush
@@ -131,6 +136,7 @@ namespace SurviveTheExam
                                 Rect c = new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight);
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), c);
                                 log.wall.Add(c);
+                                wall.wall.Add(c);
                                 break;
                             case GLogic.Items.thwall:
                                 brush = new ImageBrush
@@ -138,6 +144,7 @@ namespace SurviveTheExam
                                 Rect v = new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight);
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), v);
                                 log.wall.Add(v);
+                                wall.wall.Add(v);
                                 break;
                             case GLogic.Items.fowall:
                                 brush = new ImageBrush
@@ -145,29 +152,90 @@ namespace SurviveTheExam
                                 Rect b = new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight);
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), b);
                                 log.wall.Add(b);
+                                wall.wall.Add(b);
                                 break;
                             case GLogic.Items.fvwall:
                                 brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "5.png"), UriKind.RelativeOrAbsolute)));
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 1))
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "score.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                {
+                                }
+                                else
+                                {
+                                    var q = new Score(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                    drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                }
                                 break;
                             case GLogic.Items.swall:
                                 brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "6.png"), UriKind.RelativeOrAbsolute)));
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 1))
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "score.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                {
+                                }
+                                else
+                                {
+                                    var q = new Score(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                    drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                }
                                 break;
                             case GLogic.Items.svwall:
                                 brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "7.png"), UriKind.RelativeOrAbsolute)));
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 1))
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "score.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                {
+                                }
+                                else
+                                {
+                                    var q = new Score(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                    drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                }
                                 break;
                             case GLogic.Items.ewall:
                                 brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "8.png"), UriKind.RelativeOrAbsolute)));
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 1))
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "score.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                {
+                                }
+                                else
+                                {
+                                    var q = new Score(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                    drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                }
                                 break;
                             case GLogic.Items.floor:
                                 drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 1))
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "score.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                {
+                                }
+                                else
+                                {
+                                    var q = new Score(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                    drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                }
                                 break;
                             case GLogic.Items.five:
                                 if (FiveActive == log.FiveCount)
@@ -186,24 +254,35 @@ namespace SurviveTheExam
                             default:
                                 break;
                         }
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "zh2_bal.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), zh2.Area);
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "zh1_bal.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), zh.Area);
                         drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "fiu_e_1.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), p.Area);
                         foreach (var item in log.hearts)
                         {
                             drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("images", "life.png"), UriKind.RelativeOrAbsolute))), new Pen(Brushes.DarkGray, 0), item.Area);
                         }
-
-                        
-
-
                     }
                 }
                 FiveActive = 0;
             }
         }
+
+        private void zh_Tick(object sender, EventArgs e)
+        {
+            zlog.MoveZh(wall);
+        }
+        private void zh1_Tick(object sender, EventArgs e)
+        {
+            z2log.MoveZh(wall);
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.rep = new GRepository();
             this.log = new GLogic(rep, p);
+
+            this.zlog = new GLogic(zh);
+            this.z2log = new GLogic(zh2);
 
             Resize(new Size(735, 660));
             SetupModel(log);
@@ -214,6 +293,12 @@ namespace SurviveTheExam
                 win.KeyDown += Win_KDown;
                 win.KeyUp += Win_KUp;
             }
+
+            zh2.Zh_timer.Start();
+            zh.Zh_timer.Start();
+            zh.Zh_timer.Tick += zh_Tick;
+            zh2.Zh_timer.Tick += zh1_Tick;
+
             this.InvalidateVisual();
         }
     }

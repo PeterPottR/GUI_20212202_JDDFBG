@@ -15,22 +15,23 @@ namespace SurviveTheExam.Logic
     public class GLogic : ILogic
     {
         Player boy;
+        Score sc;
+        public List<Tuple<int, int, int>> where = new List<Tuple<int, int, int>>();
         List<Five> fives;
         public DispatcherTimer timer = new DispatcherTimer();
+        Zh zh;
+        WallList wallL;
         public List<Rect> wall;
         public List<Heart> hearts;
         public int FiveCount = 0;
         public Stopwatch gameTime = new Stopwatch();
+        public event EventHandler Change;
 
         public enum Items
         {
-            player, zwall, owall, twall, thwall, fowall, fvwall, swall, svwall, ewall, floor, zh, coffee, five
+            zwall, owall, twall, thwall, fowall, fvwall, swall, svwall, ewall, floor, coffee, five
         }
         public Items[,] GameMatrix { get; set; }
-        public enum Direction
-        {
-            up, down, left, right
-        }
 
         private readonly IRepository repo;
 
@@ -40,13 +41,20 @@ namespace SurviveTheExam.Logic
 
         public Items prev = Items.floor;
 
+        public GLogic(Zh zh)
+        {
+            this.zh = zh;
+        }
+
         public GLogic(IRepository r, Player p)
         {
-            timer.Interval = TimeSpan.FromMilliseconds(5);
+            timer.Interval = TimeSpan.FromMilliseconds(15);
             timer.IsEnabled = true;
             timer.Tick += timer_Tick;
+            timer.Start();
             this.boy = p;
             this.repo = r;
+            sc = new Score();
 
             level = new Queue<string>();
             var lvls = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "levels"), "*.lvl");
@@ -85,8 +93,6 @@ namespace SurviveTheExam.Logic
 
         public void MovePlayer(int sp)
         {
-            timer.Start();
-
             if (boy.up)
             {
                 var i = false;
@@ -109,6 +115,7 @@ namespace SurviveTheExam.Logic
                 {
                     boy.ChangeY(-7);
                 }
+
             }
             else if (boy.down)
             {
@@ -176,62 +183,397 @@ namespace SurviveTheExam.Logic
                     boy.ChangeX(4);
                 }
             }
+            Change?.Invoke(this, null);
+
+            var q = where.Find(x => boy.Area.Contains(x.Item1, x.Item2) && x.Item3 == 1);
+            if (q != null)
+            {
+                var index = where.FindIndex(x => x.Item1 == q.Item1 && x.Item2 == q.Item2);
+                where[index] = Tuple.Create(q.Item1, q.Item2, 0);
+                sc.ScoreNum++;
+            }
         }
 
-        public void MoveZh()
+        private int merre = 1;
+
+        public void MoveZh(WallList w)
         {
-            //var coords = WhereP();
-            //int i = coords[0];
-            //int j = coords[1];
-            //int old_i = i;
-            //int old_j = j;
-            //switch (Direction dc)
-            //{
-            //    case Direction.up:
-            //        if (i - 1 >= 0) { i--; }
-            //        break;
-            //    case Direction.down:
-            //        if (i + 1 < GameMatrix.GetLength(0)) { i++; }
-            //        break;
-            //    case Direction.left:
-            //        if (j - 1 >= 0) { j--; }
-            //        break;
-            //    case Direction.right:
-            //        if (j + 1 < GameMatrix.GetLength(1)) { j++; }
-            //        break;
-            //    default:
-            //        break;
-            //}
-            //if (GameMatrix[i, j] == Items.floor)
-            //{
-            //    GameMatrix[i, j] = Items.player;
-            //    GameMatrix[old_i, old_j] = prev;
-            //    prev = Items.floor;
-            //}
-            //else if (GameMatrix[i, j] == Items.fvwall)
-            //{
-            //    GameMatrix[i, j] = Items.player;
-            //    GameMatrix[old_i, old_j] = prev;
-            //    prev = Items.fvwall;
-            //}
-            //else if (GameMatrix[i, j] == Items.swall)
-            //{
-            //    GameMatrix[i, j] = Items.player;
-            //    GameMatrix[old_i, old_j] = prev;
-            //    prev = Items.swall;
-            //}
-            //else if (GameMatrix[i, j] == Items.svwall)
-            //{
-            //    GameMatrix[i, j] = Items.player;
-            //    GameMatrix[old_i, old_j] = prev;
-            //    prev = Items.svwall;
-            //}
-            //else if (GameMatrix[i, j] == Items.ewall)
-            //{
-            //    GameMatrix[i, j] = Items.player;
-            //    GameMatrix[old_i, old_j] = prev;
-            //    prev = Items.ewall;
-            //}
+            this.wallL = w;
+            switch (merre)
+            {
+                case 1:
+                    if (zh.GoUp(wallL.wall))
+                    {
+                        zh.ChangeY(-4);
+                        if (zh.GoLeft(wallL.wall) && !zh.GoRight(wallL.wall))
+                        {
+                            var q = zh.Random(1, 6);
+                            if (q > 4 && zh.TurnLR(zh.Area.Y))
+                            {
+                                merre = 3;
+                            }
+                            else merre = 1;
+                        }
+                        else if (zh.GoRight(wallL.wall) && !zh.GoLeft(wallL.wall))
+                        {
+                            var q = zh.Random(1, 6);
+                            if (q > 4 && zh.TurnLR(zh.Area.Y))
+                            {
+                                merre = 4;
+                            }
+                            else merre = 1;
+                        }
+                        else if (zh.GoRight(wallL.wall) && zh.GoLeft(wallL.wall))
+                        {
+                            //random 3as
+                            var q = zh.Random(3, 7);
+                            if (q < 5 && zh.TurnLR(zh.Area.Y))
+                            {
+                                merre = q;
+                            }
+                            else merre = 1;
+                        }
+                    }
+                    else if (!zh.GoUp(wallL.wall))
+                    {
+                        if (zh.GoLeft(wallL.wall) && !zh.GoRight(wallL.wall) && zh.GoDown(wallL.wall))
+                        {
+                            var q = zh.Random(1, 50);
+                            if (q > 44)
+                            {
+                                merre = 2;
+                            }
+                            else merre = 3;
+                        }
+                        else if (zh.GoLeft(wallL.wall) && !zh.GoRight(wallL.wall) && !zh.GoDown(wallL.wall))
+                        {
+                            merre = 3;
+                        }
+                        else if (zh.GoRight(wallL.wall) && !zh.GoLeft(wallL.wall) && zh.GoDown(wallL.wall))
+                        {
+                            //random 2es
+                            var q = zh.Random(1, 50);
+                            if (q > 44)
+                            {
+                                merre = 2;
+                            }
+                            else merre = 4;
+                        }
+                        else if (zh.GoRight(wallL.wall) && !zh.GoLeft(wallL.wall) && !zh.GoDown(wallL.wall))
+                        {
+                            merre = 4;
+                        }
+                        else if (zh.GoRight(wallL.wall) && zh.GoLeft(wallL.wall) && zh.GoDown(wallL.wall))
+                        {
+                            //random 3as
+                            var q = zh.Random(1, 50);
+                            if (q > 44)
+                            {
+                                merre = 2;
+                            }
+                            else if (q % 2 == 0)
+                            {
+                                merre = 4;
+                            }
+                            else merre = 3;
+                        }
+                        else if (zh.GoRight(wallL.wall) && zh.GoLeft(wallL.wall) && !zh.GoDown(wallL.wall))
+                        {
+                            //random 2es
+                            var q = zh.Random(1, 50);
+                            if (q % 2 == 0)
+                            {
+                                merre = 4;
+                            }
+                            else merre = 3;
+                        }
+                        else
+                        {
+                            //lefelé
+                            merre = 2;
+                        }
+                    }
+                    break;
+                case 2:
+                    if (zh.GoDown(wallL.wall))
+                    {
+                        zh.ChangeY(4);
+                        if (zh.GoLeft(wallL.wall) && !zh.GoRight(wallL.wall))
+                        {
+                            var q = zh.Random(1, 6);
+                            if (q > 4 && zh.TurnLR(zh.Area.Y))
+                            {
+                                merre = 3;
+                            }
+                            else merre = 2;
+                        }
+                        else if (zh.GoRight(wallL.wall) && !zh.GoLeft(wallL.wall))
+                        {
+                            var q = zh.Random(1, 6);
+                            if (q > 4 && zh.TurnLR(zh.Area.Y))
+                            {
+                                merre = 4;
+                            }
+                            else merre = 2;
+                        }
+                        else if (zh.GoRight(wallL.wall) && zh.GoLeft(wallL.wall))
+                        {
+                            var q = zh.Random(3, 7);
+                            if (q < 5 && zh.TurnLR(zh.Area.Y))
+                            {
+                                merre = q;
+                            }
+                            else merre = 2;
+                        }
+
+                    }
+                    else if (!zh.GoDown(wallL.wall))
+                    {
+                        if (zh.GoLeft(wallL.wall) && !zh.GoRight(wallL.wall) && zh.GoUp(wallL.wall))
+                        {
+                            var q = zh.Random(1, 50);
+                            if (q > 44)
+                            {
+                                merre = 1;
+                            }
+                            else merre = 3;
+                            //random 2es
+                        }
+                        else if (zh.GoLeft(wallL.wall) && !zh.GoRight(wallL.wall) && !zh.GoUp(wallL.wall))
+                        {
+                            merre = 3;
+                        }
+                        else if (zh.GoRight(wallL.wall) && !zh.GoLeft(wallL.wall) && zh.GoUp(wallL.wall))
+                        {
+                            var q = zh.Random(1, 50);
+                            if (q > 44)
+                            {
+                                merre = 1;
+                            }
+                            else merre = 4;
+                        }
+                        else if (zh.GoRight(wallL.wall) && !zh.GoLeft(wallL.wall) && !zh.GoUp(wallL.wall))
+                        {
+                            //jobb
+                            merre = 4;
+                        }
+                        else if (zh.GoRight(wallL.wall) && zh.GoLeft(wallL.wall) && zh.GoUp(wallL.wall))
+                        {
+                            //random 3as
+                            var q = zh.Random(1, 50);
+                            if (q > 44)
+                            {
+                                merre = 1;
+                            }
+                            else if (q % 2 == 0)
+                            {
+                                merre = 4;
+                            }
+                            else merre = 3;
+                        }
+                        else if (zh.GoRight(wallL.wall) && zh.GoLeft(wallL.wall) && !zh.GoUp(wallL.wall))
+                        {
+                            //random 2es
+                            var q = zh.Random(1, 50);
+                            if (q % 2 == 0)
+                            {
+                                merre = 4;
+                            }
+                            else merre = 3;
+                        }
+                        else
+                        {
+                            //felfelé
+                            merre = 1;
+                        }
+                    }
+                    break;
+                case 3:
+                    if (zh.GoLeft(wallL.wall))
+                    {
+                        zh.ChangeX(-7);
+                        if (zh.GoUp(wallL.wall) && !zh.GoDown(wallL.wall))
+                        {
+                            //random 2es
+                            var q = zh.Random(1, 6);
+                            if (q > 4 && zh.TurnUpDown(zh.Area.X))
+                            {
+                                merre = 1;
+                            }
+                            else merre = 3;
+                        }
+                        else if (zh.GoDown(wallL.wall) && !zh.GoUp(wallL.wall))
+                        {
+                            var q = zh.Random(1, 6);
+                            if (q > 4 && zh.TurnUpDown(zh.Area.X))
+                            {
+                                merre = 2;
+                            }
+                            else merre = 3;
+                        }
+                        else if (zh.GoDown(wallL.wall) && zh.GoUp(wallL.wall))
+                        {
+                            //random 3as
+                            var q = zh.Random(1, 6);
+                            if (q < 3 && zh.TurnUpDown(zh.Area.X))
+                            {
+                                merre = q;
+                            }
+                            else merre = 3;
+                        }
+                    }
+                    else if (!zh.GoLeft(wallL.wall))
+                    {
+                        if (zh.GoUp(wallL.wall) && !zh.GoRight(wallL.wall) && zh.GoDown(wallL.wall))
+                        {
+                            var q = zh.Random(1, 50);
+                            if (q % 2 == 0)
+                            {
+                                merre = 1;
+                            }
+                            else merre = 2;
+                        }
+                        else if (zh.GoUp(wallL.wall) && !zh.GoRight(wallL.wall) && !zh.GoDown(wallL.wall))
+                        {
+                            merre = 1;
+                        }
+                        else if (zh.GoRight(wallL.wall) && !zh.GoUp(wallL.wall) && zh.GoDown(wallL.wall))
+                        {
+                            //random 2es
+                            var q = zh.Random(1, 50);
+                            if (q > 44)
+                            {
+                                merre = 4;
+                            }
+                            else merre = 2;
+                        }
+                        else if (!zh.GoRight(wallL.wall) && !zh.GoUp(wallL.wall) && zh.GoDown(wallL.wall))
+                        {
+                            merre = 2;
+                        }
+                        else if (zh.GoRight(wallL.wall) && zh.GoUp(wallL.wall) && zh.GoDown(wallL.wall))
+                        {
+                            var q = zh.Random(1, 50);
+                            if (q > 44)
+                            {
+                                merre = 4;
+                            }
+                            else if (q % 2 == 0)
+                            {
+                                merre = 1;
+                            }
+                            else merre = 2;
+                        }
+                        else if (!zh.GoDown(wallL.wall) && zh.GoRight(wallL.wall) && zh.GoUp(wallL.wall))
+                        {
+                            var q = zh.Random(1, 50);
+                            if (q > 44)
+                            {
+                                merre = 4;
+                            }
+                            else merre = 1;
+                        }
+                        else
+                        {
+                            //lefelé
+                            merre = 4;
+                        }
+                    }
+                    break;
+                case 4:
+                    if (zh.GoRight(wallL.wall))
+                    {
+                        zh.ChangeX(7);
+                        if (zh.GoUp(wallL.wall) && !zh.GoDown(wallL.wall))
+                        {
+                            //random 2es
+                            var q = zh.Random(1, 6);
+                            if (q > 4 && zh.TurnUpDown(zh.Area.X))
+                            {
+                                merre = 1;
+                            }
+                            else merre = 4;
+
+                        }
+                        else if (zh.GoDown(wallL.wall) && !zh.GoUp(wallL.wall))
+                        {
+                            var q = zh.Random(1, 6);
+                            if (q > 4 && zh.TurnUpDown(zh.Area.X))
+                            {
+                                merre = 2;
+                            }
+                            else merre = 4;
+                        }
+                        else if (zh.GoDown(wallL.wall) && zh.GoUp(wallL.wall))
+                        {
+                            var q = zh.Random(1, 6);
+                            if (q < 3 && zh.TurnUpDown(zh.Area.X))
+                            {
+                                merre = q;
+                            }
+                            else merre = 4;
+                        }
+                    }
+                    else if (!zh.GoRight(wallL.wall))
+                    {
+                        if (zh.GoUp(wallL.wall) && !zh.GoLeft(wallL.wall) && zh.GoDown(wallL.wall))
+                        {
+                            var q = zh.Random(1, 50);
+                            if (q % 2 == 0)
+                            {
+                                merre = 1;
+                            }
+                            else merre = 2;
+                        }
+                        else if (zh.GoUp(wallL.wall) && !zh.GoLeft(wallL.wall) && !zh.GoDown(wallL.wall))
+                        {
+                            merre = 1;
+                        }
+                        else if (zh.GoLeft(wallL.wall) && !zh.GoUp(wallL.wall) && zh.GoDown(wallL.wall))
+                        {
+                            var q = zh.Random(1, 50);
+                            if (q > 44)
+                            {
+                                merre = 3;
+                            }
+                            else merre = 2;
+                        }
+                        else if (!zh.GoLeft(wallL.wall) && !zh.GoUp(wallL.wall) && zh.GoDown(wallL.wall))
+                        {
+                            merre = 2;
+                        }
+                        else if (zh.GoLeft(wallL.wall) && zh.GoUp(wallL.wall) && zh.GoDown(wallL.wall))
+                        {
+                            var q = zh.Random(1, 50);
+                            if (q > 44)
+                            {
+                                merre = 3;
+                            }
+                            else if (q % 2 == 0)
+                            {
+                                merre = 1;
+                            }
+                            else merre = 2;
+                        }
+                        else if (!zh.GoDown(wallL.wall) && zh.GoLeft(wallL.wall) && zh.GoUp(wallL.wall))
+                        {
+                            var q = zh.Random(1, 50);
+                            if (q > 44)
+                            {
+                                merre = 3;
+                            }
+                            else merre = 1;
+                        }
+                        else
+                        {
+                            //lefelé
+                            merre = 3;
+                        }
+                    }
+                    break;
+            }
+            Change?.Invoke(this, null);
+
         }
 
         public void FiveCollected()
