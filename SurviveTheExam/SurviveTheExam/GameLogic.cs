@@ -100,7 +100,6 @@ namespace SurviveTheExam
                 drawingContext.DrawRectangle(Brushes.Black, new Pen(Brushes.Black, 0), new Rect(0, 55, 750, 700));
                 drawingContext.DrawRectangle(Brushes.DarkBlue, new Pen(Brushes.Black, 0), new Rect(0, 700, 750, 800));
 
-
                 drawingContext.DrawRectangle(Brushes.OrangeRed, new Pen(Brushes.Black, 0), new Rect(0, 0, 200, 50));
                 drawingContext.DrawText(TimeTextSetup(), new Point(10, 10));
 
@@ -237,6 +236,7 @@ namespace SurviveTheExam
                                     drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
                                 }
                                 break;
+                            //ötös implementálás
                             case GLogic.Items.five:
                                 if (FiveActive == log.FiveCount)
                                 {
@@ -248,6 +248,19 @@ namespace SurviveTheExam
                                 else
                                 {
                                     FiveActive++;
+                                    drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                break;
+                            //kávé implementálás
+                            case GLogic.Items.coffee:
+                                if (log.hearts.Count<4)
+                                {
+                                    brush = new ImageBrush
+                                    (new BitmapImage(new Uri(Path.Combine("images", "coffee.png"), UriKind.RelativeOrAbsolute)));
+                                    drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                else
+                                {
                                     drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
                                 }
                                 break;

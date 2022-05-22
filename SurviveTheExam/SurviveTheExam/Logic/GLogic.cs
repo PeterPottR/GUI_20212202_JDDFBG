@@ -77,7 +77,7 @@ namespace SurviveTheExam.Logic
             MovePlayer(7);
         }
 
-        public void LifeGained()
+        public void CoffeePickedUp()
         {
 
         }
@@ -614,6 +614,7 @@ namespace SurviveTheExam.Logic
                 case '7': return Items.svwall;
                 case '8': return Items.ewall;
                 case 'o': return Items.five;
+                case 'k': return Items.coffee;
                 default:
                     return Items.floor;
             }
