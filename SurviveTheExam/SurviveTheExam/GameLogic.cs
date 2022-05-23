@@ -19,17 +19,20 @@ namespace SurviveTheExam
     {
         private IRepository rep;
         private GLogic log;
+        private GLogic Clog;
         private GLogic zlog;
         private GLogic z2log;
         private string currentPlayerName;
         private string currentFileName;
-        private Player p = new Player((7 * 49) + 1, (8 * 44) + 50);
+        private Player p;
         private Heart h = new Heart(660, 709);
         private Time t = new Time(20, 709);
         private int FiveActive = 0;
         private WallList wall = new WallList();
-        private Zh zh = new Zh(13 * 49, (7 * 44) + 50);
-        private Zh zh2 = new Zh(10 * 49, (13 * 44) + 50);
+        //private int[] zhCoord;
+        //private int[] PCoord = new int[2];
+        private Zh zh;
+        private Zh zh2;
 
 
         public ILogic model;
@@ -108,6 +111,8 @@ namespace SurviveTheExam
             {
                 double rectWidth = size.Width / model.GameMatrix.GetLength(1);
                 double rectHeight = size.Height / model.GameMatrix.GetLength(0);
+
+                //zhCoord = new int[4];
 
                 drawingContext.DrawRectangle(Brushes.DarkBlue, new Pen(Brushes.Black, 0), new Rect(0, 0, 750, 55));
                 drawingContext.DrawRectangle(Brushes.Black, new Pen(Brushes.Black, 0), new Rect(0, 55, 750, 700));
@@ -343,17 +348,25 @@ namespace SurviveTheExam
 
         private void zh_Tick(object sender, EventArgs e)
         {
-            zlog.MoveZh(wall, 2);
+            zlog.MoveZh(wall,log.where, 2);
         }
         private void zh1_Tick(object sender, EventArgs e)
         {
-            z2log.MoveZh(wall, 3);
+            z2log.MoveZh(wall, log.where, 3);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.rep = new GRepository();
-            this.log = new GLogic(rep, p);
+            this.Clog = new GLogic();
+            int[] plc = Clog.PCoord();
+            p = new Player((plc[0] * 49) + 1, (plc[1] * 44) + 50);
+            this.log = new GLogic(rep, p, plc);
+
+            int[] c = Clog.zhCoord();
+
+            zh = new Zh(c[0] * 49, (c[1] * 44)+50);
+            zh2 = new Zh(c[0] * 49, (c[1] * 44) + 50);
 
             this.zlog = new GLogic(zh);
             this.z2log = new GLogic(zh2);
