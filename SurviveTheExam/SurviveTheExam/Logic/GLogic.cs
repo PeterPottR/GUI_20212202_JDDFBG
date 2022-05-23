@@ -66,7 +66,7 @@ namespace SurviveTheExam.Logic
             LoadNext(level.Dequeue());
             hearts = new List<Heart>();
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {
                 hearts.Add(new Heart(620 + i * 30, 709));
                 //660, 709
@@ -223,8 +223,6 @@ namespace SurviveTheExam.Logic
                 }
             }
         }
-
-
 
         private int merre = 1;
 
