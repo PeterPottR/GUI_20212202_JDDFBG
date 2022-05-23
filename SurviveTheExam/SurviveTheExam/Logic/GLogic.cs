@@ -693,8 +693,16 @@ namespace SurviveTheExam.Logic
         {
             if (level.Count>0)
             {
+                FiveCount = 0;
+                AllFivesCollected = false;
+                where = new List<Tuple<int, int, int>>();
                 LoadNext(level.Dequeue());
             }
+            else
+            {
+                //NYERTÉL SCREEN MEGJELENÍTÉS
+            }
+                
         }
 
         //ötösök kezelése
