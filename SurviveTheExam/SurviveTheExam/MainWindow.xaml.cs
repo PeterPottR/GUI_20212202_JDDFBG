@@ -7,12 +7,19 @@ namespace SurviveTheExam
     /// </summary>
     public partial class MainWindow : Window
     {
+        string name = string.Empty;
         public MainWindow()
         {
             InitializeComponent();
+            this.playerName.Text = name;
         }
 
-        private void newGame(object sender, RoutedEventArgs e)
+        public MainWindow(string playerName) : base()
+        {
+            name = playerName;
+        }
+
+        public void newGame(object sender, RoutedEventArgs e)
         {
             if (playerName.Text != string.Empty)
             {
@@ -23,7 +30,10 @@ namespace SurviveTheExam
 
         private void Leaderboard(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new LeaderBoard();
+            //Application.Current.MainWindow.Content = new LeaderBoard();
+            LeaderBoard ld = new LeaderBoard();
+            ld.Show();
+            Window.GetWindow(this).Close();
         }
     }
 }

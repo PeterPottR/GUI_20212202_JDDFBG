@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SurviveTheExam.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,13 +18,13 @@ namespace SurviveTheExam
     /// <summary>
     /// Interaction logic for LeaderBoard.xaml
     /// </summary>
-    public partial class LeaderBoard : Page
+    public partial class LeaderBoard : Window
     {
         public LeaderBoard()
         {
             InitializeComponent();
-            //jön egy repo vagy ami nálunk a fő indító implemetálás
-            //scores.Itemsource = GetScores() metódus
+            var repo = new GRepository();
+            this.scores.ItemsSource = repo.GetScores();
         }
 
         private void Back(object sender, RoutedEventArgs e)

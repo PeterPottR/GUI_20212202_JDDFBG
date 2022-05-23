@@ -27,7 +27,7 @@ namespace SurviveTheExam.Repository
 
             foreach (XElement item in this.scores.Root.Descendants("onescore"))
             {
-                scores.Add(new PointsToXML(item.Element("name").Value, TimeSpan.Parse(item.Element("time").Value), int.Parse(item.Element("points").Value)));
+                scores.Add(new PointsToXML(item.Element("name").Value, item.Element("time").Value, int.Parse(item.Element("points").Value)));
             }
 
             List<PointsToXML> orderedScores = scores.OrderByDescending(x => x.Time).ToList();
@@ -37,17 +37,18 @@ namespace SurviveTheExam.Repository
 
         public void NewScore(string name, TimeSpan time, int score)
         {
+            string tm = time.ToString(@"mm\:ss");
             if (scores == null)
             {
                 scores = new XDocument();
                 scores.Add(new XElement("scores"));
-                XElement newScore = new XElement("onescore", new XElement("name", name), new XElement("time", time), new XElement("points", score));
+                XElement newScore = new XElement("onescore", new XElement("name", name), new XElement("time", tm), new XElement("points", score));
                 scores.Element("scores").Add(newScore);
                 scores.Save("scores.xml");
             }
             else
             {
-                XElement newScore = new XElement("onescore", new XElement("name", name), new XElement("time", time), new XElement("points", score));
+                XElement newScore = new XElement("onescore", new XElement("name", name), new XElement("time", tm), new XElement("points", score));
                 scores.Element("scores").Add(newScore);
                 scores.Save("scores.xml");
             }

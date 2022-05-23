@@ -15,43 +15,119 @@ namespace SurviveTheExam.Logic
     public class GLogic : ILogic
     {
         Player boy;
+        public Score sc;
+        public List<Tuple<int, int, int>> where = new List<Tuple<int, int, int>>();
         List<Five> fives;
         public DispatcherTimer timer = new DispatcherTimer();
         Zh zh;
+        Zh zh2;
         WallList wallL;
+        int[] p;
         public List<Rect> wall;
         public List<Heart> hearts;
+        public bool CoffeeUsed = false;
         public int FiveCount = 0;
         public Stopwatch gameTime = new Stopwatch();
         public event EventHandler Change;
+        Window w;
+        string pname;
+        int end = 0;
 
         public enum Items
         {
-            zwall, owall, twall, thwall, fowall, fvwall, swall, svwall, ewall, floor, coffee, five
+            zwall, owall, twall, thwall, fowall, fvwall, swall, svwall, ewall, floor, coffee, five, door, zh, pl
         }
         public Items[,] GameMatrix { get; set; }
+        public bool AllFivesCollected = false;
+
+        public int[] zhC()
+        {
+            int k = 0;
+            //Zh[] zz = new Zh[2];
+            int[] cd = new int[4];
+            for (int i = 0; i < GameMatrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < GameMatrix.GetLength(1); j++)
+                {
+                    if (GameMatrix[i, j] == Items.zh)
+                    {
+                        cd[k] = j;
+                        k++;
+                        cd[k] = i;
+                        k++;
+                        GameMatrix[i, j] = Items.floor;
+                    }
+                }
+            }
+
+            //Zh zh = new Zh(cd[0] * 49, (cd[1] * 44) + 50);
+            //Zh zh2 = new Zh(cd[2] * 49, (cd[2] * 44) + 50);
+
+            //zz[0] = zh;
+            //zz[1] = zh2;
+
+            return cd;
+        }
+
+        public int[] PCoord()
+        {
+            int k = 0;
+            int[] cd = new int[2];
+            for (int i = 0; i < GameMatrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < GameMatrix.GetLength(1); j++)
+                {
+                    if (GameMatrix[i, j] == Items.pl)
+                    {
+                        cd[k] = j;
+                        k++;
+                        cd[k] = i;
+                        GameMatrix[i, j] = Items.floor;
+                    }
+                }
+            }
+            return cd;
+        }
 
         private readonly IRepository repo;
 
-        public event EventHandler GameOver;
+        //public event EventHandler GameOver;
 
         private Queue<string> level;
+        private int heartsNumb = 3;
 
-        public Items prev = Items.floor;
+        //public Items prev = Items.floor;
 
         public GLogic(Zh zh)
         {
             this.zh = zh;
         }
 
-        public GLogic(IRepository r, Player p)
+        public GLogic()
         {
+            level = new Queue<string>();
+            var lvls = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "levels"), "*.lvl");
+            foreach (var item in lvls)
+            {
+                level.Enqueue(item);
+            }
+            LoadNext(level.Dequeue());
+        }
+
+        public GLogic(IRepository r, Player p, int[] pc, Zh zh1, Zh zh2, Window w, string pname)
+        {
+            this.pname = pname;
+            this.w = w;
+            this.p = pc;
             timer.Interval = TimeSpan.FromMilliseconds(15);
             timer.IsEnabled = true;
             timer.Tick += timer_Tick;
             timer.Start();
             this.boy = p;
             this.repo = r;
+            this.zh = zh1;
+            this.zh2 = zh2;
+            sc = new Score();
 
             level = new Queue<string>();
             var lvls = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "levels"), "*.lvl");
@@ -62,7 +138,7 @@ namespace SurviveTheExam.Logic
             LoadNext(level.Dequeue());
             hearts = new List<Heart>();
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < heartsNumb; i++)
             {
                 hearts.Add(new Heart(620 + i * 30, 709));
                 //660, 709
@@ -74,9 +150,11 @@ namespace SurviveTheExam.Logic
             MovePlayer(7);
         }
 
-        public void LifeGained()
+        public void CoffeeCollected()
         {
-
+            heartsNumb++;
+            hearts.Add(new Heart(620 + (heartsNumb-1) * 30, 709));
+            CoffeeUsed = true;
         }
 
         private void LoadNext(string path)
@@ -186,11 +264,77 @@ namespace SurviveTheExam.Logic
                 }
             }
             Change?.Invoke(this, null);
+            //score coin keresés
+            var q = where.Find(x => boy.Area.Contains(x.Item1, x.Item2) && x.Item3!=0);
+            if (q != null)
+            {
+                //Ha coin-t veszünk fel
+                if (q.Item3 == 1)
+                {
+                    var index = where.FindIndex(x => x.Item1 == q.Item1 && x.Item2 == q.Item2);
+                    where[index] = Tuple.Create(q.Item1, q.Item2, 0);
+                    sc.ScoreNum++;
+                }
+                //Ha ötöst veszünk fel
+                else if (q.Item3 == 5)
+                {
+                    var index = where.FindIndex(x => x.Item1 == q.Item1 && x.Item2 == q.Item2);
+                    where[index] = Tuple.Create(q.Item1, q.Item2, 0);
+                    FiveCollected();
+                }
+                //Ha kimegyünk az ajtón
+                else if (q.Item3 == 6)
+                {
+                    LevelFinished();
+                }
+                else if (q.Item3 == 2 || q.Item3 == 3)
+                {
+                    var h = hearts.FindIndex(x => x.Area.X == (620 + (heartsNumb - 1) * 30));
+                    if (heartsNumb == 1)
+                    {
+                        //heartsNumb--;
+                        this.gameTime.Stop();
+                        this.timer.Stop();
+                        end = 1;
+                    }
+
+                    else 
+                    {
+                        hearts.RemoveAt(h);
+                        heartsNumb--;
+                        boy.SetPosition((p[0] * 49) + 1, (p[1] * 44) + 50);
+                        Change?.Invoke(this, null);
+                    }
+                }
+                //Ha kávét veszünk fel
+                else
+                {
+                    if (heartsNumb < 3)
+                    {
+                        var index = where.FindIndex(x => x.Item1 == q.Item1 && x.Item2 == q.Item2);
+                        where[index] = Tuple.Create(q.Item1, q.Item2, 0);
+                        if (!CoffeeUsed)
+                        {
+                            CoffeeCollected();
+                        }
+                        
+                    }
+
+                }
+                
+            }
+            if (this.end == 1)
+            {
+                GameOver end = new GameOver(this.pname);
+                end.Show();
+                Window.GetWindow(w).Close();
+                //NewScore(pname, gameTime.Elapsed, sc.ScoreNum);
+            }
         }
 
         private int merre = 1;
 
-        public void MoveZh(WallList w)
+        public void MoveZh(WallList w, List<Tuple<int, int, int>> where, int numb)
         {
             this.wallL = w;
             switch (merre)
@@ -567,14 +711,49 @@ namespace SurviveTheExam.Logic
                     break;
             }
             Change?.Invoke(this, null);
-
+            var z = where.FindIndex(x => x.Item3 == numb);
+            if (z != -1)
+            {
+                where[z] = Tuple.Create(int.Parse((zh.Area.X + 24).ToString()), int.Parse((zh.Area.Y + 22).ToString()), numb);
+            }
+            else where.Add(Tuple.Create(int.Parse((zh.Area.X + 24).ToString()), int.Parse((zh.Area.Y + 22).ToString()), numb));
         }
 
+        //szint befejezése, következő szint betöltése
+        private void LevelFinished()
+        {
+            if (level.Count>0)
+            {
+                FiveCount = 0;
+                AllFivesCollected = false;
+                where = new List<Tuple<int, int, int>>();
+                CoffeeUsed = false;
+                LoadNext(level.Dequeue());
+                this.p = PCoord();
+                boy.SetPosition((p[0] * 49) + 1, (p[1] * 44) + 50);
+                int[] zg = zhC();
+                zh.SetPosition(zg[0] * 49, (zg[1] * 44) + 50);
+                zh2.SetPosition(zg[2] * 49, (zg[3] * 44) + 50);
+            }
+            else
+            {
+                this.gameTime.Stop();
+                this.timer.Stop();
+                Win won = new Win();
+                won.Show();
+                Window.GetWindow(w).Close();
+                NewScore(pname, gameTime.Elapsed, sc.ScoreNum);
+            }
+                
+        }
+
+        //ötösök kezelése
         public void FiveCollected()
         {
-            if (FiveCount<3)
+            FiveCount++;
+            if(FiveCount==3)
             {
-                FiveCount++;
+                AllFivesCollected = true;
             }
         }
 
@@ -603,6 +782,10 @@ namespace SurviveTheExam.Logic
                 case '7': return Items.svwall;
                 case '8': return Items.ewall;
                 case 'o': return Items.five;
+                case 'k': return Items.coffee;
+                case 'f': return Items.door;
+                case 'z': return Items.zh;
+                case 's': return Items.pl;
                 default:
                     return Items.floor;
             }

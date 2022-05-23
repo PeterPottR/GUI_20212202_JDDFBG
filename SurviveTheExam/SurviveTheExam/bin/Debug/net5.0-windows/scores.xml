@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<scores>
+  <onescore>
+    <name>Lili</name>
+    <time>03:17</time>
+    <points>201</points>
+  </onescore>
+    <onescore>
+    <name>Peti</name>
+    <time>02:25</time>
+    <points>217</points>
+  </onescore>
+    <onescore>
+    <name>Ádám</name>
+    <time>03:34</time>
+    <points>223</points>
+  </onescore>
+    <onescore>
+    <name>Petra</name>
+    <time>04:01</time>
+    <points>239</points>
+  </onescore>
+    <onescore>
+    <name>Laci</name>
+    <time>02:48</time>
+    <points>246</points>
+  </onescore>
+    <onescore>
+    <name>Noncsi</name>
+    <time>02:39</time>
+    <points>252</points>
+  </onescore>
+</scores>
