@@ -252,12 +252,24 @@ namespace SurviveTheExam
                                 break;
                             //ötös implementálás
                             case GLogic.Items.five:
+                                //where.Add(Tuple.Create(int.Parse((this.area.X + 24).ToString()), int.Parse((this.area.Y + 22).ToString()), 1));
                                 if (FiveActive == log.FiveCount)
-                                {
+                                { 
                                     FiveActive++;
-                                    brush = new ImageBrush
-                                    (new BitmapImage(new Uri(Path.Combine("images", "book.png"), UriKind.RelativeOrAbsolute)));
-                                    drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                    if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 5))
+                                    {
+                                        brush = new ImageBrush
+                                    (new BitmapImage(new Uri(Path.Combine("images", "five.png"), UriKind.RelativeOrAbsolute)));
+                                        drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                    }
+                                    else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                    {
+                                    }
+                                    else
+                                    {
+                                        var q = new Five(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                        drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                    }
                                 }
                                 else
                                 {
@@ -269,9 +281,44 @@ namespace SurviveTheExam
                             case GLogic.Items.coffee:
                                 if (log.hearts.Count<3)
                                 {
-                                    brush = new ImageBrush
+                                    if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 3))
+                                    {
+                                        brush = new ImageBrush
                                     (new BitmapImage(new Uri(Path.Combine("images", "coffee.png"), UriKind.RelativeOrAbsolute)));
+                                        drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                    }
+                                    else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                    {
+                                    }
+                                    else
+                                    {
+                                        var q = new Coffee(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                        drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                    }
+                                }
+                                else
+                                {
                                     drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                break;
+                            //kijárat implementálás
+                            case GLogic.Items.door:
+                                if (log.AllFivesCollected)
+                                {
+                                    if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 6))
+                                    {
+                                        brush = new ImageBrush
+                                    (new BitmapImage(new Uri(Path.Combine("images", "door.png"), UriKind.RelativeOrAbsolute)));
+                                        drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                    }
+                                    else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                    {
+                                    }
+                                    else
+                                    {
+                                        var q = new Finish(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                        drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                    }
                                 }
                                 else
                                 {

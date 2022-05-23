@@ -29,9 +29,10 @@ namespace SurviveTheExam.Logic
 
         public enum Items
         {
-            zwall, owall, twall, thwall, fowall, fvwall, swall, svwall, ewall, floor, coffee, five
+            zwall, owall, twall, thwall, fowall, fvwall, swall, svwall, ewall, floor, coffee, five, door
         }
         public Items[,] GameMatrix { get; set; }
+        public bool AllFivesCollected = false;
 
         private readonly IRepository repo;
 
@@ -65,7 +66,7 @@ namespace SurviveTheExam.Logic
             LoadNext(level.Dequeue());
             hearts = new List<Heart>();
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
                 hearts.Add(new Heart(620 + i * 30, 709));
                 //660, 709
@@ -77,9 +78,9 @@ namespace SurviveTheExam.Logic
             MovePlayer(7);
         }
 
-        public void CoffeePickedUp()
+        public void CoffeeCollected()
         {
-
+            hearts.Add(new Heart(620 + hearts.Count-1 * 30, 709));
         }
 
         private void LoadNext(string path)
@@ -190,14 +191,40 @@ namespace SurviveTheExam.Logic
             }
             Change?.Invoke(this, null);
 
-            var q = where.Find(x => boy.Area.Contains(x.Item1, x.Item2) && x.Item3 == 1);
+            //score coin keresés
+            var q = where.Find(x => boy.Area.Contains(x.Item1, x.Item2) && x.Item3!=0);
             if (q != null)
             {
-                var index = where.FindIndex(x => x.Item1 == q.Item1 && x.Item2 == q.Item2);
-                where[index] = Tuple.Create(q.Item1, q.Item2, 0);
-                sc.ScoreNum++;
+                //Ha coin-t veszünk fel
+                if (q.Item3 == 1)
+                {
+                    var index = where.FindIndex(x => x.Item1 == q.Item1 && x.Item2 == q.Item2);
+                    where[index] = Tuple.Create(q.Item1, q.Item2, 0);
+                    sc.ScoreNum++;
+                }
+                //Ha ötöst veszünk fel
+                else if (q.Item3 == 5)
+                {
+                    var index = where.FindIndex(x => x.Item1 == q.Item1 && x.Item2 == q.Item2);
+                    where[index] = Tuple.Create(q.Item1, q.Item2, 0);
+                    FiveCollected();
+                }
+                //Ha kimegyünk az ajtón
+                else if (q.Item3 == 6)
+                {
+                    LevelFinished();
+                }
+                //Ha kávét veszünk fel
+                else
+                {
+                    var index = where.FindIndex(x => x.Item1 == q.Item1 && x.Item2 == q.Item2);
+                    where[index] = Tuple.Create(q.Item1, q.Item2, 0);
+                    CoffeeCollected();
+                }
             }
         }
+
+
 
         private int merre = 1;
 
@@ -581,11 +608,19 @@ namespace SurviveTheExam.Logic
 
         }
 
+        //szint befejezése, következő szint betöltése
+        private void LevelFinished()
+        {
+            throw new NotImplementedException();
+        }
+
+        //ötösök kezelése
         public void FiveCollected()
         {
-            if (FiveCount<3)
+            FiveCount++;
+            if(FiveCount==3)
             {
-                FiveCount++;
+                AllFivesCollected = true;
             }
         }
 
@@ -615,6 +650,7 @@ namespace SurviveTheExam.Logic
                 case '8': return Items.ewall;
                 case 'o': return Items.five;
                 case 'k': return Items.coffee;
+                case 'f': return Items.door;
                 default:
                     return Items.floor;
             }
