@@ -22,8 +22,8 @@ namespace SurviveTheExam
         private GLogic Clog;
         private GLogic zlog;
         private GLogic z2log;
-        private string currentPlayerName;
-        private string currentFileName;
+        private string cPName;
+        //public string currentFileName;
         private Player p;
         private Heart h = new Heart(660, 709);
         private Time t = new Time(20, 709);
@@ -57,7 +57,7 @@ namespace SurviveTheExam
         public GameLogic(string playerName)
         {
             this.Loaded += this.Window_Loaded;
-            this.currentPlayerName = playerName;
+            this.cPName = playerName;
         }
 
         private void Win_KDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -368,22 +368,30 @@ namespace SurviveTheExam
             this.z2log = new GLogic(zh2);
 
             p = new Player((plc[0] * 49) + 1, (plc[1] * 44) + 50);
-            this.log = new GLogic(rep, p, plc, zh, zh2);
+            Window win = Window.GetWindow(this);
+            this.log = new GLogic(rep, p, plc, zh, zh2, win, cPName);
 
             Resize(new Size(735, 660));
             SetupModel(log);
-
-            Window win = Window.GetWindow(this);
             if (win != null)
             {
                 win.KeyDown += Win_KDown;
                 win.KeyUp += Win_KUp;
-            }
 
-            zh2.Zh_timer.Start();
-            zh.Zh_timer.Start();
-            zh.Zh_timer.Tick += zh_Tick;
-            zh2.Zh_timer.Tick += zh1_Tick;
+                zh2.Zh_timer.Start();
+                zh.Zh_timer.Start();
+                zh.Zh_timer.Tick += zh_Tick;
+                zh2.Zh_timer.Tick += zh1_Tick;
+            }
+            else
+            {
+                zh2.Zh_timer.Stop();
+                zh.Zh_timer.Stop();
+            }
+            //zh2.Zh_timer.Start();
+            //zh.Zh_timer.Start();
+            //zh.Zh_timer.Tick += zh_Tick;
+            //zh2.Zh_timer.Tick += zh1_Tick;
 
             this.InvalidateVisual();
         }

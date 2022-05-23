@@ -1,5 +1,4 @@
-﻿using SurviveTheExam.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,22 +15,13 @@ using System.Windows.Shapes;
 namespace SurviveTheExam
 {
     /// <summary>
-    /// Interaction logic for LeaderBoard.xaml
+    /// Interaction logic for Win.xaml
     /// </summary>
-    public partial class LeaderBoard : Page
+    public partial class Win : Window
     {
-        public LeaderBoard()
+        public Win()
         {
             InitializeComponent();
-            var repo = new GRepository();
-            this.scores.ItemsSource = repo.GetScores();
-        }
-
-        private void Back(object sender, RoutedEventArgs e)
-        {
-            MainWindow m = new MainWindow();
-            m.Show();
-            Window.GetWindow(this).Close();
         }
     }
 }
