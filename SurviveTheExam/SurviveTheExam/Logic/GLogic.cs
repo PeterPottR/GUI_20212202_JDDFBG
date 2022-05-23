@@ -693,7 +693,10 @@ namespace SurviveTheExam.Logic
         //szint befejezése, következő szint betöltése
         private void LevelFinished()
         {
-            throw new NotImplementedException();
+            if (level.Count>0)
+            {
+                LoadNext(level.Dequeue());
+            }
         }
 
         //ötösök kezelése
