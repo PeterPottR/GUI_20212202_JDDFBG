@@ -300,8 +300,6 @@ namespace SurviveTheExam.Logic
             }
         }
 
-
-
         private int merre = 1;
 
         public void MoveZh(WallList w, List<Tuple<int, int, int>> where, int numb)
