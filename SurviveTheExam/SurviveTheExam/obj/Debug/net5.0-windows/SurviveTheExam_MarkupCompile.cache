@@ -4,12 +4,20 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\
+=======
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\
+>>>>>>> Model
 SurviveTheExam
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
+<<<<<<< HEAD
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\App.xaml
+=======
+C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\App.xaml
+>>>>>>> Model
 41513525473
 
 25-1511973112

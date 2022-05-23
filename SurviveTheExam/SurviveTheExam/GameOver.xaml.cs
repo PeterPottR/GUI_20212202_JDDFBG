@@ -19,17 +19,30 @@ namespace SurviveTheExam
     /// </summary>
     public partial class GameOver : Window
     {
-        public GameOver(string name)
+        private string playerName;
+
+        public string PlayerName
+        {
+            get { return playerName; }
+            set { playerName = value; }
+        }
+
+        public GameOver(string playerName)
         {
             InitializeComponent();
+            this.PlayerName = playerName;
         }
 
         private void Retry(object sender, RoutedEventArgs e)
         {
+            var mainwindow = new MainWindow();
+            mainwindow.Show();
+            this.Close();
         }
 
         private void Exit(object sender, RoutedEventArgs e)
         {
+            Application.Current.Shutdown();
         }
     }
 }
