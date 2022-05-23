@@ -9,12 +9,17 @@ SurviveTheExam
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
+<<<<<<< HEAD
+C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\App.xaml
+41513525473
+=======
 D:\DEVELOPMENT\PROJECT WORK (C#)\GUI_JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\App.xaml
 3-1137625399
+>>>>>>> Model
 
-24-987781278
+25-1511973112
 193-1891726104
-GameOver.xaml;LeaderBoard.xaml;MainWindow.xaml;
+GameOver.xaml;LeaderBoard.xaml;MainWindow.xaml;Win.xaml;
 
 False
 
