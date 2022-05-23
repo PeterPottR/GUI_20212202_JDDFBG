@@ -25,6 +25,7 @@ namespace SurviveTheExam.Logic
         int[] p;
         public List<Rect> wall;
         public List<Heart> hearts;
+        public bool CoffeeUsed = false;
         public int FiveCount = 0;
         public Stopwatch gameTime = new Stopwatch();
         public event EventHandler Change;
@@ -153,6 +154,7 @@ namespace SurviveTheExam.Logic
         {
             heartsNumb++;
             hearts.Add(new Heart(620 + (heartsNumb-1) * 30, 709));
+            CoffeeUsed = true;
         }
 
         private void LoadNext(string path)
@@ -311,7 +313,11 @@ namespace SurviveTheExam.Logic
                     {
                         var index = where.FindIndex(x => x.Item1 == q.Item1 && x.Item2 == q.Item2);
                         where[index] = Tuple.Create(q.Item1, q.Item2, 0);
-                        CoffeeCollected();
+                        if (!CoffeeUsed)
+                        {
+                            CoffeeCollected();
+                        }
+                        
                     }
 
                 }
@@ -734,6 +740,7 @@ namespace SurviveTheExam.Logic
                 FiveCount = 0;
                 AllFivesCollected = false;
                 where = new List<Tuple<int, int, int>>();
+                CoffeeUsed = false;
                 LoadNext(level.Dequeue());
                 this.p = PCoord();
                 boy.SetPosition((p[0] * 49) + 1, (p[1] * 44) + 50);
