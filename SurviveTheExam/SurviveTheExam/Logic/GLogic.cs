@@ -28,6 +28,9 @@ namespace SurviveTheExam.Logic
         public int FiveCount = 0;
         public Stopwatch gameTime = new Stopwatch();
         public event EventHandler Change;
+        Window w;
+        string pname;
+        int end = 0;
 
         public enum Items
         {
@@ -87,7 +90,7 @@ namespace SurviveTheExam.Logic
 
         private readonly IRepository repo;
 
-        public event EventHandler GameOver;
+        //public event EventHandler GameOver;
 
         private Queue<string> level;
         private int heartsNumb = 3;
@@ -110,8 +113,10 @@ namespace SurviveTheExam.Logic
             LoadNext(level.Dequeue());
         }
 
-        public GLogic(IRepository r, Player p, int[] pc, Zh zh1, Zh zh2)
+        public GLogic(IRepository r, Player p, int[] pc, Zh zh1, Zh zh2, Window w, string pname)
         {
+            this.pname = pname;
+            this.w = w;
             this.p = pc;
             timer.Interval = TimeSpan.FromMilliseconds(15);
             timer.IsEnabled = true;
@@ -283,14 +288,17 @@ namespace SurviveTheExam.Logic
                 else if (q.Item3 == 2 || q.Item3 == 3)
                 {
                     var h = hearts.FindIndex(x => x.Area.X == (620 + (heartsNumb - 1) * 30));
-                    hearts.RemoveAt(h);
                     if (heartsNumb == 1)
                     {
-                        //GameOver;
+                        //heartsNumb--;
+                        this.gameTime.Stop();
+                        this.timer.Stop();
+                        end = 1;
                     }
 
                     else 
-                    { 
+                    {
+                        hearts.RemoveAt(h);
                         heartsNumb--;
                         boy.SetPosition((p[0] * 49) + 1, (p[1] * 44) + 50);
                         Change?.Invoke(this, null);
@@ -309,7 +317,26 @@ namespace SurviveTheExam.Logic
                 }
                 
             }
+            if (this.end == 1)
+            {
+                GameOver end = new GameOver();
+                end.Show();
+                Window.GetWindow(w).Close();
+                NewScore(pname, gameTime.Elapsed, sc.ScoreNum);
+            }
         }
+
+        //private void EndGame()
+        //{
+        //    if (this.end == 1)
+        //    {
+        //        GameOver end = new GameOver();
+        //        end.Show();
+        //        Window.GetWindow(w).Close();
+        //        NewScore(pname, gameTime.Elapsed, sc.ScoreNum);
+        //    }
+
+        //}
 
         private int merre = 1;
 
