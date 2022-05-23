@@ -26,7 +26,7 @@ namespace SurviveTheExam
 
         private void Retry(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.MainWindow.Content = new GameLogic();
         }
 
         private void Exit(object sender, RoutedEventArgs e)
