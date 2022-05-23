@@ -30,7 +30,7 @@ namespace SurviveTheExam.Repository
                 scores.Add(new PointsToXML(item.Element("name").Value, item.Element("time").Value, int.Parse(item.Element("points").Value)));
             }
 
-            List<PointsToXML> orderedScores = scores.OrderByDescending(x => x.Time).ToList();
+            List<PointsToXML> orderedScores = scores.OrderBy(x => x.Time).ToList();
 
             return orderedScores;
         }
