@@ -328,7 +328,7 @@ namespace SurviveTheExam.Logic
                 GameOver end = new GameOver(this.pname);
                 end.Show();
                 Window.GetWindow(w).Close();
-                //NewScore(pname, gameTime.Elapsed, sc.ScoreNum);
+                NewScore(pname, gameTime.Elapsed, sc.ScoreNum);
             }
         }
 

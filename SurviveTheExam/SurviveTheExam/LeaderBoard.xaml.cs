@@ -18,7 +18,7 @@ namespace SurviveTheExam
     /// <summary>
     /// Interaction logic for LeaderBoard.xaml
     /// </summary>
-    public partial class LeaderBoard : Page
+    public partial class LeaderBoard : Window
     {
         public LeaderBoard()
         {
