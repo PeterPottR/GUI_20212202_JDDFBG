@@ -8,11 +8,16 @@
     "net5.0-windows7.0": []
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Kocsis Noémi\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\Hp\\.nuget\\packages\\": {}
+>>>>>>> Model
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Kocsis Noémi\\Documents\\Egyetem\\prog4\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
       "projectName": "SurviveTheExam",
       "projectPath": "C:\\Users\\Kocsis Noémi\\Documents\\Egyetem\\prog4\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
@@ -21,6 +26,16 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kocsis Noémi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "D:\\DEVELOPMENT\\PROJECT WORK (C#)\\GUI_JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
+      "projectName": "SurviveTheExam",
+      "projectPath": "D:\\DEVELOPMENT\\PROJECT WORK (C#)\\GUI_JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\SurviveTheExam.csproj",
+      "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
+      "outputPath": "D:\\DEVELOPMENT\\PROJECT WORK (C#)\\GUI_JÁTÉK\\GUI_20212202_JDDFBG\\SurviveTheExam\\SurviveTheExam\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> Model
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -63,7 +78,11 @@
             "privateAssets": "none"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+>>>>>>> Model
       }
     }
   }
