@@ -214,6 +214,10 @@ namespace SurviveTheExam.Logic
                 {
                     LevelFinished();
                 }
+                else if (q.Item3 == 2 || q.Item3 == 2)
+                {
+                    //élet -1
+                }
                 //Ha kávét veszünk fel
                 else
                 {
@@ -228,7 +232,7 @@ namespace SurviveTheExam.Logic
 
         private int merre = 1;
 
-        public void MoveZh(WallList w)
+        public void MoveZh(WallList w, int numb)
         {
             this.wallL = w;
             switch (merre)
@@ -605,7 +609,13 @@ namespace SurviveTheExam.Logic
                     break;
             }
             Change?.Invoke(this, null);
-
+            var z = where.Find(x => x.Item3 == numb);
+            if (z != null)
+            {
+                var index = where.FindIndex(x => x.Item1 == z.Item1 && x.Item2 == z.Item2);
+                where[index] = Tuple.Create(int.Parse((zh.Area.X + 24).ToString()), int.Parse((zh.Area.Y + 22).ToString()), numb);
+            }
+            else Tuple.Create(int.Parse((zh.Area.X + 24).ToString()), int.Parse((zh.Area.Y + 22).ToString()), numb);
         }
 
         //szint befejezése, következő szint betöltése

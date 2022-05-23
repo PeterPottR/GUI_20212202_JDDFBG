@@ -343,11 +343,11 @@ namespace SurviveTheExam
 
         private void zh_Tick(object sender, EventArgs e)
         {
-            zlog.MoveZh(wall);
+            zlog.MoveZh(wall, 2);
         }
         private void zh1_Tick(object sender, EventArgs e)
         {
-            z2log.MoveZh(wall);
+            z2log.MoveZh(wall, 3);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
