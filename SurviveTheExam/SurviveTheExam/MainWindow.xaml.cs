@@ -7,9 +7,16 @@ namespace SurviveTheExam
     /// </summary>
     public partial class MainWindow : Window
     {
+        string name = string.Empty;
         public MainWindow()
         {
             InitializeComponent();
+            this.playerName.Text = name;
+        }
+
+        public MainWindow(string playerName) : base()
+        {
+            name = playerName;
         }
 
         private void newGame(object sender, RoutedEventArgs e)
