@@ -220,6 +220,7 @@ namespace SurviveTheExam.Logic
                     var index = where.FindIndex(x => x.Item1 == q.Item1 && x.Item2 == q.Item2);
                     where[index] = Tuple.Create(q.Item1, q.Item2, 0);
                     CoffeeCollected();
+                    hearts.r
                 }
             }
         }
@@ -609,9 +610,9 @@ namespace SurviveTheExam.Logic
             if (z != null)
             {
                 var index = where.FindIndex(x => x.Item1 == z.Item1 && x.Item2 == z.Item2);
-                where[index] = Tuple.Create(int.Parse(zh.Area.X.ToString()), int.Parse(zh.Area.Y.ToString()), numb);
+                where[index] = Tuple.Create(int.Parse((zh.Area.X + 24).ToString()), int.Parse((zh.Area.Y + 22).ToString()), numb);
             }
-            else Tuple.Create(int.Parse(zh.Area.X.ToString()), int.Parse(zh.Area.Y.ToString()), numb);
+            else Tuple.Create(int.Parse((zh.Area.X + 24).ToString()), int.Parse((zh.Area.Y + 22).ToString()), numb);
         }
 
         //szint befejezése, következő szint betöltése
