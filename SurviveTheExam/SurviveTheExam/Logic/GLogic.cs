@@ -214,11 +214,7 @@ namespace SurviveTheExam.Logic
                 {
                     LevelFinished();
                 }
-                else if (q.Item3 == 2)
-                {
-                    //élet -1
-                }
-                else if (q.Item3 == 3)
+                else if (q.Item3 == 2 || q.Item3 == 2)
                 {
                     //élet -1
                 }
