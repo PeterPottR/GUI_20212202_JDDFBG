@@ -214,13 +214,20 @@ namespace SurviveTheExam.Logic
                 {
                     LevelFinished();
                 }
+                else if (q.Item3 == 2)
+                {
+                    //élet -1
+                }
+                else if (q.Item3 == 3)
+                {
+                    //élet -1
+                }
                 //Ha kávét veszünk fel
                 else
                 {
                     var index = where.FindIndex(x => x.Item1 == q.Item1 && x.Item2 == q.Item2);
                     where[index] = Tuple.Create(q.Item1, q.Item2, 0);
                     CoffeeCollected();
-                    hearts.r
                 }
             }
         }
