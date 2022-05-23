@@ -14,7 +14,7 @@ namespace SurviveTheExam.Model
         public Coffee(double x, double y, List<Tuple<int, int, int>> where)
         {
             this.area = new Rect(x, y, 49, 44);
-            where.Add(Tuple.Create(int.Parse((this.area.X + 24).ToString()), int.Parse((this.area.Y + 22).ToString()), 3));
+            where.Add(Tuple.Create(int.Parse((this.area.X + 24).ToString()), int.Parse((this.area.Y + 22).ToString()), 4));
         }
         public Coffee()
         {
