@@ -61,7 +61,7 @@ namespace SurviveTheExam {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SurviveTheExam;V1.0.0.0;component/leaderboard.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SurviveTheExam;component/leaderboard.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\LeaderBoard.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

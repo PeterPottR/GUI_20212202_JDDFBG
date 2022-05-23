@@ -360,16 +360,15 @@ namespace SurviveTheExam
             this.rep = new GRepository();
             this.Clog = new GLogic();
             int[] plc = Clog.PCoord();
-            p = new Player((plc[0] * 49) + 1, (plc[1] * 44) + 50);
-            this.log = new GLogic(rep, p, plc);
 
-            int[] c = Clog.zhCoord();
-
-            zh = new Zh(c[0] * 49, (c[1] * 44)+50);
-            zh2 = new Zh(c[0] * 49, (c[1] * 44) + 50);
-
+            int[] zhG = Clog.zhC();
+            zh = new Zh(zhG[0] * 49, (zhG[1] * 44) + 50);
+            zh2 = new Zh(zhG[2] * 49, (zhG[2] * 44) + 50);
             this.zlog = new GLogic(zh);
             this.z2log = new GLogic(zh2);
+
+            p = new Player((plc[0] * 49) + 1, (plc[1] * 44) + 50);
+            this.log = new GLogic(rep, p, plc, zh, zh2);
 
             Resize(new Size(735, 660));
             SetupModel(log);

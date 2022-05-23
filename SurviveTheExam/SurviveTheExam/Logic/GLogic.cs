@@ -20,6 +20,7 @@ namespace SurviveTheExam.Logic
         List<Five> fives;
         public DispatcherTimer timer = new DispatcherTimer();
         Zh zh;
+        Zh zh2;
         WallList wallL;
         int[] p;
         public List<Rect> wall;
@@ -35,9 +36,10 @@ namespace SurviveTheExam.Logic
         public Items[,] GameMatrix { get; set; }
         public bool AllFivesCollected = false;
 
-        public int[] zhCoord()
+        public int[] zhC()
         {
             int k = 0;
+            //Zh[] zz = new Zh[2];
             int[] cd = new int[4];
             for (int i = 0; i < GameMatrix.GetLength(0); i++)
             {
@@ -53,6 +55,13 @@ namespace SurviveTheExam.Logic
                     }
                 }
             }
+
+            //Zh zh = new Zh(cd[0] * 49, (cd[1] * 44) + 50);
+            //Zh zh2 = new Zh(cd[2] * 49, (cd[2] * 44) + 50);
+
+            //zz[0] = zh;
+            //zz[1] = zh2;
+
             return cd;
         }
 
@@ -101,7 +110,7 @@ namespace SurviveTheExam.Logic
             LoadNext(level.Dequeue());
         }
 
-        public GLogic(IRepository r, Player p, int[] pc)
+        public GLogic(IRepository r, Player p, int[] pc, Zh zh1, Zh zh2)
         {
             this.p = pc;
             timer.Interval = TimeSpan.FromMilliseconds(15);
@@ -110,6 +119,8 @@ namespace SurviveTheExam.Logic
             timer.Start();
             this.boy = p;
             this.repo = r;
+            this.zh = zh1;
+            this.zh2 = zh2;
             sc = new Score();
 
             level = new Queue<string>();
@@ -697,6 +708,11 @@ namespace SurviveTheExam.Logic
                 AllFivesCollected = false;
                 where = new List<Tuple<int, int, int>>();
                 LoadNext(level.Dequeue());
+                this.p = PCoord();
+                boy.SetPosition((p[0] * 49) + 1, (p[1] * 44) + 50);
+                int[] zg = zhC();
+                zh.SetPosition(zg[0] * 49, (zg[1] * 44) + 50);
+                zh2.SetPosition(zg[2] * 49, (zg[3] * 44) + 50);
             }
             else
             {
