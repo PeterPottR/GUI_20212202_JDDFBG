@@ -79,3 +79,4 @@ C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExa
 C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\Win.baml
 C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\Win.g.cs
 C:\Users\Kocsis Noémi\Documents\Egyetem\prog4\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\Win.baml
+C:\Users\Lili\Documents\JÁTÉK\GUI_20212202_JDDFBG\SurviveTheExam\SurviveTheExam\obj\Debug\net5.0-windows\SurviveTheExam.csproj.AssemblyReference.cache

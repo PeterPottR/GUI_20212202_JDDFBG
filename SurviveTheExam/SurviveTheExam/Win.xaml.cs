@@ -26,7 +26,9 @@ namespace SurviveTheExam
 
         private void LB(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new LeaderBoard();
+            LeaderBoard ld = new LeaderBoard();
+            ld.Show();
+            Window.GetWindow(this).Close();
         }
 
 
