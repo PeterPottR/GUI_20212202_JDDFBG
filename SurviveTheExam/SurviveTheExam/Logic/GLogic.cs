@@ -325,24 +325,12 @@ namespace SurviveTheExam.Logic
             }
             if (this.end == 1)
             {
-                GameOver end = new GameOver();
+                GameOver end = new GameOver(pname);
                 end.Show();
                 Window.GetWindow(w).Close();
-                NewScore(pname, gameTime.Elapsed, sc.ScoreNum);
+                //NewScore(pname, gameTime.Elapsed, sc.ScoreNum);
             }
         }
-
-        //private void EndGame()
-        //{
-        //    if (this.end == 1)
-        //    {
-        //        GameOver end = new GameOver();
-        //        end.Show();
-        //        Window.GetWindow(w).Close();
-        //        NewScore(pname, gameTime.Elapsed, sc.ScoreNum);
-        //    }
-
-        //}
 
         private int merre = 1;
 
@@ -726,7 +714,6 @@ namespace SurviveTheExam.Logic
             var z = where.FindIndex(x => x.Item3 == numb);
             if (z != -1)
             {
-                //var index = where.FindIndex(x => x.Item1 == z.Item1 && x.Item2 == z.Item2);
                 where[z] = Tuple.Create(int.Parse((zh.Area.X + 24).ToString()), int.Parse((zh.Area.Y + 22).ToString()), numb);
             }
             else where.Add(Tuple.Create(int.Parse((zh.Area.X + 24).ToString()), int.Parse((zh.Area.Y + 22).ToString()), numb));
@@ -750,7 +737,12 @@ namespace SurviveTheExam.Logic
             }
             else
             {
-                //NYERTÉL SCREEN MEGJELENÍTÉS
+                this.gameTime.Stop();
+                this.timer.Stop();
+                Win won = new Win();
+                won.Show();
+                Window.GetWindow(w).Close();
+                NewScore(pname, gameTime.Elapsed, sc.ScoreNum);
             }
                 
         }

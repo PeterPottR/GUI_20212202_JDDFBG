@@ -12,7 +12,7 @@ namespace SurviveTheExam
             InitializeComponent();
         }
 
-        private void newGame(object sender, RoutedEventArgs e)
+        public void newGame(object sender, RoutedEventArgs e)
         {
             if (playerName.Text != string.Empty)
             {

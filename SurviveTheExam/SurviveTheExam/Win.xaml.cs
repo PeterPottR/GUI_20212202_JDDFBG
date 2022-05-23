@@ -23,5 +23,18 @@ namespace SurviveTheExam
         {
             InitializeComponent();
         }
+
+        private void LB(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = new LeaderBoard();
+        }
+
+
+        private void MN(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.Show();
+            Window.GetWindow(this).Close();
+        }
     }
 }
