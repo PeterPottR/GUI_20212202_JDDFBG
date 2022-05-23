@@ -75,7 +75,7 @@ namespace SurviveTheExam
             int minutes = ElapsedTime / 60;
             string testString = $"Time: {minutes}:{seconds}";
 
-            FormattedText formattedText = new FormattedText(testString, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Comic sans m"), 30, Brushes.White);
+            FormattedText formattedText = new FormattedText(testString, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Comic Sans MS"), 30, Brushes.White);
 
             formattedText.MaxTextWidth = 200;
             formattedText.MaxTextHeight = 50;
@@ -84,6 +84,19 @@ namespace SurviveTheExam
             //formattedText.SetForegroundBrush(new LinearGradientBrush(Colors.Pink, Colors.Crimson, 90.0), 36, 5);
             //formattedText.SetFontSize(36, 36, 5);
             //formattedText.SetFontWeight(FontWeights.Bold, 42, 48);
+
+            return formattedText;
+        }
+
+        private FormattedText ScoreTextSetUp()
+        {
+            int score = log.sc.ScoreNum;
+            string scoreString = $"Score: {score}";
+
+            FormattedText formattedText = new FormattedText(scoreString, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Comic Sans MS"), 30, Brushes.White);
+
+            formattedText.MaxTextWidth = 200;
+            formattedText.MaxTextHeight = 50;
 
             return formattedText;
         }
@@ -100,9 +113,9 @@ namespace SurviveTheExam
                 drawingContext.DrawRectangle(Brushes.Black, new Pen(Brushes.Black, 0), new Rect(0, 55, 750, 700));
                 drawingContext.DrawRectangle(Brushes.DarkBlue, new Pen(Brushes.Black, 0), new Rect(0, 700, 750, 800));
 
-
                 drawingContext.DrawRectangle(Brushes.OrangeRed, new Pen(Brushes.Black, 0), new Rect(0, 0, 200, 50));
                 drawingContext.DrawText(TimeTextSetup(), new Point(10, 10));
+                drawingContext.DrawText(ScoreTextSetUp(), new Point(250, 10));
 
                 log.wall = new List<Rect>();
                 wall.wall = new List<Rect>();
@@ -237,17 +250,78 @@ namespace SurviveTheExam
                                     drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
                                 }
                                 break;
+                            //ötös implementálás
                             case GLogic.Items.five:
+                                //where.Add(Tuple.Create(int.Parse((this.area.X + 24).ToString()), int.Parse((this.area.Y + 22).ToString()), 1));
                                 if (FiveActive == log.FiveCount)
-                                {
+                                { 
                                     FiveActive++;
-                                    brush = new ImageBrush
-                                    (new BitmapImage(new Uri(Path.Combine("images", "book.png"), UriKind.RelativeOrAbsolute)));
-                                    drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                    if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 5))
+                                    {
+                                        brush = new ImageBrush
+                                    (new BitmapImage(new Uri(Path.Combine("images", "five.png"), UriKind.RelativeOrAbsolute)));
+                                        drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                    }
+                                    else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                    {
+                                    }
+                                    else
+                                    {
+                                        var q = new Five(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                        drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                    }
                                 }
                                 else
                                 {
                                     FiveActive++;
+                                    drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                break;
+                            //kávé implementálás
+                            case GLogic.Items.coffee:
+                                if (log.hearts.Count<3)
+                                {
+                                    if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 3))
+                                    {
+                                        brush = new ImageBrush
+                                    (new BitmapImage(new Uri(Path.Combine("images", "coffee.png"), UriKind.RelativeOrAbsolute)));
+                                        drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                    }
+                                    else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                    {
+                                    }
+                                    else
+                                    {
+                                        var q = new Coffee(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                        drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                    }
+                                }
+                                else
+                                {
+                                    drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                }
+                                break;
+                            //kijárat implementálás
+                            case GLogic.Items.door:
+                                if (log.AllFivesCollected)
+                                {
+                                    if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 6))
+                                    {
+                                        brush = new ImageBrush
+                                    (new BitmapImage(new Uri(Path.Combine("images", "door.png"), UriKind.RelativeOrAbsolute)));
+                                        drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
+                                    }
+                                    else if (log.where.Exists(x => x.Item1 == (j * rectWidth + 24) && x.Item2 == (i * rectHeight) + 72 && x.Item3 == 0))
+                                    {
+                                    }
+                                    else
+                                    {
+                                        var q = new Finish(j * rectWidth, (i * rectHeight) + 50, log.where);
+                                        drawingContext.DrawRectangle(new ImageBrush(q.pic), new Pen(Brushes.DarkGray, 0), q.Area);
+                                    }
+                                }
+                                else
+                                {
                                     drawingContext.DrawRectangle(brush, new Pen(Brushes.DarkGray, 0), new Rect(j * rectWidth, (i * rectHeight) + 50, rectWidth, rectHeight));
                                 }
                                 break;
